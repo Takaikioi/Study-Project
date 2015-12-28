@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Study-Project</string>
     <string name="action_settings">Settings</string>
+    <string name="homeCourseButton">Course</string>
+    <string name="homeReviewButton">Review</string>
+    <string name="homeCalendarButton">Calendar</string>
+    <string name="homeAssessmentButton">Assessment</string>
+    <string name="title_activity_course_page">CoursePage</string>
 </resources>
