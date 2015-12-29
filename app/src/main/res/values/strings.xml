@@ -5,8 +5,14 @@
     <string name="homeReviewButton">Review</string>
     <string name="homeCalendarButton">Calendar</string>
     <string name="homeAssessmentButton">Assessment</string>
+
     <string name="title_activity_course_page">Course Page</string>
-    <string name="coursePageTextField">Course stuffs be here</string>
     <string name="title_activity_time_table">TimeTable</string>
     <string name="title_activity_review">Review</string>
+
+    <string name="coursePageTextField">Course stuffs be here</string>
+    <string name="calendarPageTextField">Calendar stuffs be here</string>
+    <string name="reviewPageTextField">Review stuffs be here</string>
+
+
 </resources>

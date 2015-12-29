@@ -21,11 +21,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void goToReviewPageFromHome(View view){
-        Intent intent = new Intent(this, TimeTable.class);
+        Intent intent = new Intent(this, Review.class);
         startActivity(intent);
     }
     public void goToCalendarPageFromHome(View view){
-        Intent intent = new Intent(this, Review.class);
+        Intent intent = new Intent(this, TimeTable.class);
         startActivity(intent);
     }
     @Override

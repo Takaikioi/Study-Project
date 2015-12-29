@@ -32,7 +32,7 @@ public class Review extends AppCompatActivity {
         Intent intent = getIntent();
         TextView textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText(R.string.coursePageTextField);
+        textView.setText(R.string.reviewPageTextField);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.reviewContent);
         relativeLayout.addView(textView);
     }

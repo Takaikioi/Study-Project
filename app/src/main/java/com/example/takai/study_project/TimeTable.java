@@ -31,7 +31,7 @@ public class TimeTable extends AppCompatActivity {
         Intent intent = getIntent();
         TextView textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText(R.string.coursePageTextField);
+        textView.setText(R.string.calendarPageTextField);
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.timeTableContent);
         relativeLayout.addView(textView);
     }
