@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,49 +10,77 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.takai.study_project.HomeActivity"
-    tools:showIn="@layout/activity_home">
+    tools:showIn="@layout/activity_home"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/homeCourseButton"
-        android:id="@+id/button1"
-        android:layout_gravity="left"
-        android:onClick="goToCoursePageFromHome"
-    />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/homeAssessmentButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button3"
-        android:layout_gravity="right"
-        android:onClick="goToCoursePageFromHome"
-    />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/homeCalendarButton"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/button2"
-        android:id="@+id/button4"
-        android:layout_gravity="right"
-        android:onClick="goToCalendarPageFromHome"
-    />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/homeReviewButton"
-        android:layout_below="@+id/button1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="85dp"
-        android:id="@+id/button2"
-        android:layout_gravity="left"
-        android:onClick="goToReviewPageFromHome"
-    />
-</RelativeLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.takai.study_project.HomeActivity"
+        tools:showIn="@layout/activity_home"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/homeCalendarButton"
+            android:id="@+id/button4"
+            android:onClick="goToCalendarPageFromHome"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_gravity="left" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/homeReviewButton"
+            android:id="@+id/button2"
+            android:layout_gravity="left"
+            android:onClick="goToReviewPageFromHome"
+            android:clickable="true"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.takai.study_project.HomeActivity"
+        tools:showIn="@layout/activity_home"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/homeCourseButton"
+            android:id="@+id/button1"
+            android:onClick="goToCoursePageFromHome"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_gravity="right" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/homeAssessmentButton"
+            android:id="@+id/button3"
+            android:onClick="goToCoursePageFromHome"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_gravity="right" />
+    </LinearLayout>
+</LinearLayout>
