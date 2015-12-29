@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CoursePage extends AppCompatActivity {
+public class TimeTable extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_page);
+        setContentView(R.layout.activity_time_table);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,14 +28,12 @@ public class CoursePage extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Intent intent = getIntent();
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(R.string.coursePageTextField);
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.courseContent);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.timeTableContent);
         relativeLayout.addView(textView);
-
     }
 
 }

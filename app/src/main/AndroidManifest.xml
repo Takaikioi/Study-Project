@@ -27,6 +27,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.takai.study_project.HomeActivity" />
         </activity>
+        <activity
+            android:name=".TimeTable"
+            android:label="@string/title_activity_time_table"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.takai.study_project.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".Review"
+            android:label="@string/title_activity_review"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.takai.study_project.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -20,6 +20,14 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CoursePage.class);
         startActivity(intent);
     }
+    public void goToReviewPageFromHome(View view){
+        Intent intent = new Intent(this, TimeTable.class);
+        startActivity(intent);
+    }
+    public void goToCalendarPageFromHome(View view){
+        Intent intent = new Intent(this, Review.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

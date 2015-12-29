@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CoursePage extends AppCompatActivity {
+public class Review extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_page);
+        setContentView(R.layout.activity_review);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,9 +33,8 @@ public class CoursePage extends AppCompatActivity {
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(R.string.coursePageTextField);
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.courseContent);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.reviewContent);
         relativeLayout.addView(textView);
-
     }
 
 }
