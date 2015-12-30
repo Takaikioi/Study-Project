@@ -13,6 +13,8 @@
     <string name="coursePageTextField">Course stuffs be here</string>
     <string name="calendarPageTextField">Calendar stuffs be here</string>
     <string name="reviewPageTextField">Review stuffs be here</string>
+    <string name="title_activity_settings">settings</string>
 
-
+    <string name="preferences_file_key">com.example.takai.study_project.PREFERENCE_FILE_KEY</string>
+    <string name="title_activity_assessment">Assessment</string>
 </resources>
