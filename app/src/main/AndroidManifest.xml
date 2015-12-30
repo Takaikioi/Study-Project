@@ -46,7 +46,7 @@
                 android:value="com.example.takai.study_project.HomeActivity" />
         </activity>
         <activity
-            android:name=".settings"
+            android:name=".ApplicationSettings"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">

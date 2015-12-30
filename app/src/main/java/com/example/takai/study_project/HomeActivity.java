@@ -72,4 +72,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TimeTable.class);
         startActivity(intent);
     }
+
+    public void goToSettingsPageFromHome(MenuItem menuItem) {
+        Intent intent = new Intent(this, ApplicationSettings.class);
+        startActivity(intent);
+    }
 }
