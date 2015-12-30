@@ -12,10 +12,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CoursePage extends AppCompatActivity {
-    private DBhelper myDB;
-    private SQLiteDatabase database;
+    private DBDataSource datasource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +34,40 @@ public class CoursePage extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        myDB = new DBhelper(this);
-        myDB.insertData("harry");
+        datasource = new DBDataSource(this);
+        try {
+            datasource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        datasource.createData("harry potter");
+        List<DataItem> values = datasource.getAllDataItems();
+
+
+
+
 
         Intent intent = getIntent();
         TextView textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText(R.string.coursePageTextField);
+        textView.setText(values.toString());
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.courseContent);
         relativeLayout.addView(textView);
 
     }
 
+    protected void onResume() {
+        try {
+            datasource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        datasource.close();
+        super.onPause();
+    }
 }

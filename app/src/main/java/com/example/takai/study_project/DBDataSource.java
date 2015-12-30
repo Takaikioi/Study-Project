@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by hephalump on 30/12/2015.
@@ -40,33 +42,33 @@ public class DBDataSource {
                 allColumns, DBhelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
-        DataItem newDataItem = cursorToComment(cursor);
+        DataItem newDataItem = cursorToDataItem(cursor);
         cursor.close();
-        return newComment;
+        return newDataItem;
     }
 
-    public void deleteComment(Comment comment) {
-        long id = comment.getId();
-        System.out.println("Comment deleted with id: " + id);
-        database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
+    public void deleteData(DataItem dataItem) {
+        long id = dataItem.getId();
+        System.out.println("Data deleted with id: " + id);
+        database.delete(DBhelper.TABLE_NAME, DBhelper.COLUMN_ID
                 + " = " + id, null);
     }
 
-    public List<Comment> getAllComments() {
-        List<Comment> comments = new ArrayList<Comment>();
+    public List<DataItem> getAllDataItems() {
+        List<DataItem> dataItems = new ArrayList<DataItem>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
+        Cursor cursor = database.query(DBhelper.TABLE_NAME,
                 allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             DataItem dataItem = cursorToDataItem(cursor);
-            comments.add(comment);
+            dataItems.add(dataItem);
             cursor.moveToNext();
         }
         // make sure to close the cursor
         cursor.close();
-        return comments;
+        return dataItems;
     }
 
     private DataItem cursorToDataItem(Cursor cursor) {
