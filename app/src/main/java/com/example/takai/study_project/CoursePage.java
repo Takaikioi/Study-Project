@@ -1,6 +1,7 @@
 package com.example.takai.study_project;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +14,8 @@ import android.widget.TextView;
 import java.sql.SQLException;
 
 public class CoursePage extends AppCompatActivity {
-    DBhelper myDB;
+    private DBhelper myDB;
+    private SQLiteDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

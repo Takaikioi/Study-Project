@@ -14,17 +14,15 @@ import java.sql.SQLException;
  */
 public class DBhelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "DatabaseName";
     public static final String TABLE_NAME = "MyTableName";
-    public static final String PRIMARY_KEY = "_id integer primary key";
+    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "MyColumn";
-    public static final String COLUMN_TYPE_TEXT = "text";
-    private static final String DB_TABLE_CREATE =
-            "CREATE TABLE " + TABLE_NAME + " (" +
-                    PRIMARY_KEY  +
-                    COLUMN_NAME + "" + COLUMN_TYPE_TEXT + ");";
-
+    private static final String DB_TABLE_CREATE ="create table "
+            + TABLE_NAME + "(" + COLUMN_ID
+            + " integer primary key autoincrement, " + COLUMN_NAME
+            + " text not null);";
 
 
     public DBhelper(Context context) {
@@ -57,8 +55,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public Cursor getData(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from " + TABLE_NAME + "", null );
-        return res;
+        return db.rawQuery( "select * from " + TABLE_NAME + "", null );
     }
     public void open() throws SQLException {
         SQLiteDatabase db = this.getWritableDatabase();
