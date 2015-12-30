@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CoursePage extends AppCompatActivity {
+import java.sql.SQLException;
 
+public class CoursePage extends AppCompatActivity {
+    DBhelper myDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,9 @@ public class CoursePage extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        myDB = new DBhelper(this);
+        myDB.insertData("harry");
 
         Intent intent = getIntent();
         TextView textView = new TextView(this);
