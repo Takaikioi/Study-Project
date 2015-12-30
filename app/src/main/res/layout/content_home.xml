@@ -12,73 +12,71 @@
     android:baselineAligned="false"
     android:alignmentMode="alignBounds">
 
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
 
-<TableRow
-    android:layout_width="fill_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1" >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="@string/homeCourseButton"
+            android:id="@+id/buttonCourse"
+            android:onClick="goToCoursePageFromHome"
+            android:clickable="true"
+            android:background="#e91e63"
+            android:textColor="#ffffff"
+            android:layout_margin="6dp"
+            android:contextClickable="false"
+            android:elevation="2dp"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:text="@string/homeCourseButton"
-        android:id="@+id/buttonCourse"
-        android:onClick="goToCoursePageFromHome"
-        android:clickable="true"
-        android:background="#e91e63"
-        android:textColor="#ffffff"
-        android:layout_margin="6dp"
-        android:contextClickable="false"
-        android:elevation="2dp"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="@string/homeCalendarButton"
+            android:id="@+id/buttonCalendar"
+            android:onClick="goToCalendarPageFromHome"
+            android:clickable="true"
+            android:background="#2196F3"
+            android:textColor="#ffffff"
+            android:layout_margin="6dp"
+            android:contextClickable="false"
+            android:elevation="2dp"
+            android:layout_weight="1" />
+    </TableRow>
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:text="@string/homeCalendarButton"
-        android:id="@+id/buttonCalendar"
-        android:onClick="goToCalendarPageFromHome"
-        android:clickable="true"
-        android:background="#2196F3"
-        android:textColor="#ffffff"
-        android:layout_margin="6dp"
-        android:contextClickable="false"
-        android:elevation="2dp"
-        android:layout_weight="1" />
-</TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
 
-<TableRow
-    android:layout_width="fill_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1" >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="@string/homeAssessmentButton"
+            android:id="@+id/buttonAssessment"
+            android:onClick="goToAssessmentPageFromHome"
+            android:clickable="true"
+            android:background="#FFC107"
+            android:textColor="#ffffff"
+            android:layout_margin="6dp"
+            android:contextClickable="false"
+            android:elevation="2dp"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:text="@string/homeAssessmentButton"
-        android:id="@+id/buttonAssessment"
-        android:onClick="goToAssessmentPageFromHome"
-        android:clickable="true"
-        android:background="#FFC107"
-        android:textColor="#ffffff"
-        android:layout_margin="6dp"
-        android:contextClickable="false"
-        android:elevation="2dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:text="@string/homeReviewButton"
-        android:id="@+id/buttonReview"
-        android:onClick="goToReviewPageFromHome"
-        android:clickable="true"
-        android:background="#4caf50"
-        android:textColor="#ffffff"
-        android:layout_margin="6dp"
-        android:contextClickable="false"
-        android:elevation="2dp"
-        android:layout_weight="1" />
-</TableRow>
-
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="@string/homeReviewButton"
+            android:id="@+id/buttonReview"
+            android:onClick="goToReviewPageFromHome"
+            android:clickable="true"
+            android:background="#4caf50"
+            android:textColor="#ffffff"
+            android:layout_margin="6dp"
+            android:contextClickable="false"
+            android:elevation="2dp"
+            android:layout_weight="1" />
+    </TableRow>
 </TableLayout>
