@@ -54,17 +54,17 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goToCoursePageFromHome(View view){
-        Intent intent = new Intent(this, CoursePage.class);
+        Intent intent = new Intent(this, CourseActivity.class);
         startActivity(intent);
     }
 
     public void goToAssessmentPageFromHome(View view){
-        Intent intent = new Intent(this, Assessment.class);
+        Intent intent = new Intent(this, AssessmentActivity.class);
         startActivity(intent);
     }
 
     public void goToReviewPageFromHome(View view){
-        Intent intent = new Intent(this, Review.class);
+        Intent intent = new Intent(this, ReviewActivity.class);
         startActivity(intent);
     }
 

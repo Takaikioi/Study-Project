@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CoursePage"
+            android:name=".CourseActivity"
             android:label="@string/title_activity_course_page"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -37,7 +37,7 @@
                 android:value="com.example.takai.study_project.HomeActivity" />
         </activity>
         <activity
-            android:name=".Review"
+            android:name=".ReviewActivity"
             android:label="@string/title_activity_review"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -55,7 +55,7 @@
                 android:value="com.example.takai.study_project.HomeActivity" />
         </activity>
         <activity
-            android:name=".Assessment"
+            android:name=".AssessmentActivity"
             android:label="@string/title_activity_assessment"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
