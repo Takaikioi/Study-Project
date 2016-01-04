@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goToCalendarPageFromHome(View view){
-        Intent intent = new Intent(this, TimeTable.class);
+        Intent intent = new Intent(this, TimetableActivity.class);
         startActivity(intent);
     }
 

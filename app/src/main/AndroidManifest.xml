@@ -28,7 +28,7 @@
                 android:value="com.example.takai.study_project.HomeActivity" />
         </activity>
         <activity
-            android:name=".TimeTable"
+            android:name=".TimetableActivity"
             android:label="@string/title_activity_time_table"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
