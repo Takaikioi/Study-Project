@@ -1,5 +1,6 @@
 package com.example.takai.study_project;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,20 +14,26 @@ import android.view.MenuItem;
 public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private static final int YES_NO_CALL = 23;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                DialogFragment dialog = new YesNoDialog();
+                Bundle args = new Bundle();
+                args.putString("title", "harry potter");
+                args.putString("message", "get out");
+                dialog.setArguments(args);
+                //dialog.setTargetFragment(this, YES_NO_CALL);
+                dialog.show(getFragmentManager(), "tag");
             }
         });
     }
