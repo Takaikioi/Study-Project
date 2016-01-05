@@ -29,10 +29,10 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DialogFragment dialog = new YesNoDialog();
                 Bundle args = new Bundle();
-                args.putString("title", "harry potter");
-                args.putString("message", "get out");
+                args.putString("title", "Makeing Stuff Happen");
+                args.putString("message", "pick one");
                 dialog.setArguments(args);
-                //dialog.setTargetFragment(this, YES_NO_CALL);
+                dialog.setTargetFragment(dialog, 23);
                 dialog.show(getFragmentManager(), "tag");
             }
         });

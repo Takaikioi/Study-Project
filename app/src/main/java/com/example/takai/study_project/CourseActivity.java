@@ -40,7 +40,7 @@ public class CourseActivity extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        datasource.createData("harry potter");
+        //datasource.createData("harry potter");
         List<DataItem> values = datasource.getAllDataItems();
 
 

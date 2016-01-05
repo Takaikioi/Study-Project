@@ -32,7 +32,8 @@ public class YesNoDialog extends DialogFragment
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                      dialog.dismiss(); // getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
+                        //dialog.dismiss();
+                        getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
@@ -40,7 +41,8 @@ public class YesNoDialog extends DialogFragment
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                       dialog.dismiss(); //getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_CANCELED, null);
+                      // dialog.dismiss();
+                       getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_CANCELED, null);
                     }
                 })
                 .create();
