@@ -8,8 +8,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class ApplicationSettings extends AppCompatActivity {
+import org.w3c.dom.Text;
+
+public class SettingsActivity extends AppCompatActivity {
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor prefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +35,11 @@ public class ApplicationSettings extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences preferences = this.getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
+        preferences = this.getSharedPreferences(getString(R.string.preferences_file_key), Context.MODE_PRIVATE);
+        prefEditor = preferences.edit();
     }
 
+    public void savePreferences(View view) {
+
+    }
 }

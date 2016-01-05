@@ -4,7 +4,6 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -81,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goToSettingsPageFromHome(MenuItem menuItem) {
-        Intent intent = new Intent(this, ApplicationSettings.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 }
