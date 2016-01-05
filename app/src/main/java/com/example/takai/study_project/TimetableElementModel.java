@@ -18,6 +18,7 @@ public abstract class TimetableElementModel {
         this.TTEID = TTEID;
     }
 
+
     public String getName() {
         return name;
     }
