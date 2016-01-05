@@ -16,5 +16,14 @@
     <string name="calendarPageTextField">Calendar stuffs be here</string>
     <string name="reviewPageTextField">Review stuffs be here</string>
 
+    <string name="settings_confirm_button">SAVE CHANGES</string>
+    <string-array name="settings_type_array">
+        <item>Account</item>
+        <item>Notification</item>
+        <item>Course</item>
+        <item>SRS</item>
+        <item>Miscellaneous</item>
+    </string-array>
+
     <string name="preferences_file_key">com.example.takai.study_project.PREFERENCE_FILE_KEY</string>
 </resources>
