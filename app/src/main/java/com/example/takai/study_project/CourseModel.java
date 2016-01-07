@@ -12,7 +12,6 @@ public class CourseModel {
     private long courseID;
     private String code;
     private String name;
-
     private Color courseColor;
     private boolean active;
     private Date startDate;
