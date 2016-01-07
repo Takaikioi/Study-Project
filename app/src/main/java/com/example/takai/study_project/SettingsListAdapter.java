@@ -39,6 +39,7 @@ public class SettingsListAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView);
         int resource;
         String settingName = settingNames.get(position);
+        //Generate an icon resource for each cell.
         switch (settingName) {
             case "Account":         resource = R.drawable.ic_account_circle_black_24dp;
                                     break;
