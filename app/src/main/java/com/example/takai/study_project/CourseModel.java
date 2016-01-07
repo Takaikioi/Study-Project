@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class CourseModel {
 
-    private int courseID;
+    private long courseID;
     private String code;
     private String name;
 
@@ -33,6 +33,14 @@ public class CourseModel {
         this.courseColor = courseColor;
         this.active = true;
         this.startDate = startDate;
+    }
+    public CourseModel(){
+    }
+    public void setId(long courseID){
+        this.courseID = courseID;
+    }
+    public long getId(){
+        return  courseID;
     }
 
     public String getCode() {
@@ -81,5 +89,9 @@ public class CourseModel {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String toString(){
+        return this.name;
     }
 }

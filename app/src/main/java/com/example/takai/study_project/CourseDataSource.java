@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by hephalump on 30/12/2015.
  */
-public class DBDataSource {
+public class CourseDataSource {
 
     // Database fields
     private SQLiteDatabase database;
@@ -21,7 +21,7 @@ public class DBDataSource {
     private String[] allColumns = { DBhelper.COLUMN_ID,
             DBhelper.COLUMN_NAME };
 
-    public DBDataSource(Context context) {
+    public CourseDataSource(Context context) {
         dbHelper = new DBhelper(context);
     }
 
@@ -33,18 +33,18 @@ public class DBDataSource {
         dbHelper.close();
     }
 
-    public DataItem createData (String data) {
+    public CourseModel createData (String name) {
         ContentValues values = new ContentValues();
-        values.put(DBhelper.COLUMN_NAME, data);
+        values.put(DBhelper.COLUMN_NAME, name);
         long insertId = database.insert(DBhelper.TABLE_NAME, null,
                 values);
         Cursor cursor = database.query(DBhelper.TABLE_NAME,
                 allColumns, DBhelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
-        DataItem newDataItem = cursorToDataItem(cursor);
+        CourseModel newCourseModel = cursorToCourseModel(cursor);
         cursor.close();
-        return newDataItem;
+        return newCourseModel;
     }
 
     public void deleteData(DataItem dataItem) {
@@ -54,27 +54,27 @@ public class DBDataSource {
                 + " = " + id, null);
     }
 
-    public List<DataItem> getAllDataItems() {
-        List<DataItem> dataItems = new ArrayList<DataItem>();
+    public List<CourseModel> getAllDataItems() {
+        List<CourseModel> courseModels = new ArrayList<CourseModel>();
 
         Cursor cursor = database.query(DBhelper.TABLE_NAME,
                 allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            DataItem dataItem = cursorToDataItem(cursor);
-            dataItems.add(dataItem);
+            CourseModel courseModel = cursorToCourseModel(cursor);
+            courseModels.add(courseModel);
             cursor.moveToNext();
         }
         // make sure to close the cursor
         cursor.close();
-        return dataItems;
+        return courseModels;
     }
 
-    private DataItem cursorToDataItem(Cursor cursor) {
-        DataItem dataItem = new DataItem();
-        dataItem.setId(cursor.getLong(0));
-        dataItem.setData(cursor.getString(1));
-        return dataItem;
+    private CourseModel cursorToCourseModel(Cursor cursor) {
+        CourseModel courseModel = new CourseModel();
+        courseModel.setId(cursor.getLong(0));
+        courseModel.setName(cursor.getString(1));
+        return courseModel;
     }
 }
