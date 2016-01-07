@@ -17,6 +17,7 @@
     <string name="reviewPageTextField">Review stuffs be here</string>
 
     <string name="settings_confirm_button">SAVE CHANGES</string>
+    <string name="settings_icon_description">Settings Icon</string>
     <string-array name="settings_type_array">
         <item>Account</item>
         <item>Notification</item>
