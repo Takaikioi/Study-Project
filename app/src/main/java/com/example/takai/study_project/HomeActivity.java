@@ -21,20 +21,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment dialog = new YesNoDialog();
-                Bundle args = new Bundle();
-                args.putString("title", "Makeing Stuff Happen");
-                args.putString("message", "pick one");
-                dialog.setArguments(args);
-                dialog.setTargetFragment(dialog, 23);
-                dialog.show(getFragmentManager(), "tag");
-            }
-        });
     }
 
     @Override

@@ -26,9 +26,8 @@ import java.util.Date;
 import java.util.List;
 
 public class CourseActivity extends AppCompatActivity {
-    ArrayList<String> myArrayList=
-            new ArrayList<String>();
-    List<CourseModel> courseModels = new ArrayList<CourseModel>();
+    ArrayList<String> myArrayList = new ArrayList<>();
+    List<CourseModel> courseModels = new ArrayList<>();
     long startDate;
     long endDate;
     private CourseDataSource dataSource;
@@ -38,15 +37,8 @@ public class CourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //Force compiler to stop whinging about the potential for a null pointer.
+        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dataSource = new CourseDataSource(this);
         try {
