@@ -1,22 +1,36 @@
 package com.example.takai.study_project;
 
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CourseActivity extends AppCompatActivity {
-    private DBDataSource datasource;
+    ArrayList<String> myArrayList=
+            new ArrayList<String>();
+    List<CourseModel> courseModels = new ArrayList<CourseModel>();
 
+    private CourseDataSource dataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,41 +47,35 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        datasource = new DBDataSource(this);
+        dataSource = new CourseDataSource(this);
         try {
-            datasource.open();
+            dataSource.open();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //datasource.createData("harry potter");
-        List<DataItem> values = datasource.getAllDataItems();
 
+       // dataSource.createData("SAD");
+       // dataSource.createData("TestClass2");
+        courseModels = dataSource.getAllDataItems();
+        for(int i = 0; i < courseModels.size(); i++){
+            myArrayList.add(courseModels.get(i).toString());
+        }
+        CourseListAdapter courseListAdapter = new CourseListAdapter(this, myArrayList);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(courseListAdapter);
 
-
-
-
-        Intent intent = getIntent();
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(values.toString());
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.courseContent);
-        relativeLayout.addView(textView);
 
     }
 
+
     protected void onResume() {
-        try {
-            datasource.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        datasource.close();
         super.onPause();
     }
+
 }
+
