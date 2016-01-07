@@ -29,7 +29,8 @@ public class CourseActivity extends AppCompatActivity {
     ArrayList<String> myArrayList=
             new ArrayList<String>();
     List<CourseModel> courseModels = new ArrayList<CourseModel>();
-
+    long startDate;
+    long endDate;
     private CourseDataSource dataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,12 @@ public class CourseActivity extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-       // dataSource.createData("SAD");
-       // dataSource.createData("TestClass2");
+        startDate = 33333333;
+        endDate = 33333344;
+        dataSource.createData("sad", "2304ICT", "RED", true, startDate, endDate );
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
-            myArrayList.add(courseModels.get(i).toString());
+            myArrayList.add(courseModels.get(i).getName());
         }
         CourseListAdapter courseListAdapter = new CourseListAdapter(this, myArrayList);
         ListView listView = (ListView) findViewById(R.id.listView);
