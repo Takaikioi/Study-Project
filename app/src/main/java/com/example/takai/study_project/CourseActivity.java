@@ -1,5 +1,6 @@
 package com.example.takai.study_project;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
@@ -44,6 +45,21 @@ public class CourseActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dialog = new YesNoDialog();
+                Bundle args = new Bundle();
+                args.putString("title", "harry potter");
+                args.putString("message", "get out");
+                dialog.setArguments(args);
+                dialog.setTargetFragment(dialog, 23);
+                dialog.show(getFragmentManager(), "tag");
+            }
+        });
+
         dataSource = new CourseDataSource(this);
         try {
             dataSource.open();
@@ -51,12 +67,12 @@ public class CourseActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         // add some dates to db(just for manual testing)
-        Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String date = dateFormat.format(cal.getTime());
+//        Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String date = dateFormat.format(cal.getTime());
 
 
-        dataSource.createData("sad", "2304ICT", "RED", true, date, date );
+       // dataSource.createData("sad", "2304ICT", "RED", true, date, date );
 
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
