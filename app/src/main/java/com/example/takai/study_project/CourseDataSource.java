@@ -19,7 +19,8 @@ public class CourseDataSource {
     private SQLiteDatabase database;
     private CourseDBhelper dbHelper;
     private String[] allColumns = { CourseDBhelper.COLUMN_ID,
-            CourseDBhelper.COURSE_NAME_COLUMN};
+            CourseDBhelper.COURSE_NAME_COLUMN, CourseDBhelper.COURSE_CODE_COLUMN, CourseDBhelper.COURSE_COLOUR_COLUMN, CourseDBhelper.COURSE_ACTIVE_COLUMN,
+    CourseDBhelper.COURSE_START_DATE_COLUMN,CourseDBhelper.COURSE_END_DATE_COLUMN };
 
     public CourseDataSource(Context context) {
         dbHelper = new CourseDBhelper(context);
@@ -33,9 +34,8 @@ public class CourseDataSource {
         dbHelper.close();
     }
 
-    public CourseModel createData (String name, String code, String courseColor, boolean active, Long startDate, Long endDate) {
+    public CourseModel createData (String name, String code, String courseColor, boolean active, String startDate, String endDate) {
         ContentValues values = new ContentValues();
-        values.put(CourseDBhelper.COURSE_NAME_COLUMN, name);
         values.put(CourseDBhelper.COURSE_NAME_COLUMN, name);
         values.put(CourseDBhelper.COURSE_CODE_COLUMN, code);
         values.put(CourseDBhelper.COURSE_COLOUR_COLUMN, courseColor);
@@ -78,9 +78,21 @@ public class CourseDataSource {
     }
 
     private CourseModel cursorToCourseModel(Cursor cursor) {
+        int numCol = cursor.getColumnCount();
+        int numRow = cursor.getCount();
         CourseModel courseModel = new CourseModel();
         courseModel.setId(cursor.getLong(0));
         courseModel.setName(cursor.getString(1));
+        courseModel.setCode(cursor.getString(2));
+        courseModel.setCourseColor(cursor.getString(3));
+        if(cursor.getString(4) == "true"){
+            courseModel.setActive(true);
+        }else if(cursor.getString(4) == "false"){
+            courseModel.setActive(false);
+        }
+        courseModel.setStartDate(cursor.getString(5));
+        courseModel.setEndDate(cursor.getString(6));
+
         return courseModel;
     }
 }

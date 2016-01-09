@@ -13,7 +13,6 @@ import android.view.MenuItem;
 public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private static final int YES_NO_CALL = 23;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

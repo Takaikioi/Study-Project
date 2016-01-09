@@ -2,6 +2,7 @@ package com.example.takai.study_project;
 
 import android.graphics.Color;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -12,12 +13,13 @@ public class CourseModel {
     private long courseID;
     private String code;
     private String name;
-    private Color courseColor;
+    private String courseColor;
     private boolean active;
     private Date startDate;
     private Date endDate;
+    private SimpleDateFormat simpleStartDate = new SimpleDateFormat("yyyy-MM-dd");
 
-    public CourseModel(String code, String name, Color courseColor, boolean active, Date startDate, Date endDate){
+    public CourseModel(String code, String name, String courseColor, boolean active, Date startDate, Date endDate){
         this.code = code;
         this.name = name;
         this.courseColor = courseColor;
@@ -26,7 +28,7 @@ public class CourseModel {
         this.endDate = endDate;
     }
 
-    public CourseModel(String code, String name, Color courseColor, Date startDate){
+    public CourseModel(String code, String name, String courseColor, Date startDate){
         this.code = code;
         this.name = name;
         this.courseColor = courseColor;
@@ -34,6 +36,7 @@ public class CourseModel {
         this.startDate = startDate;
     }
     public CourseModel(){
+
     }
     public void setId(long courseID){
         this.courseID = courseID;
@@ -58,11 +61,11 @@ public class CourseModel {
         this.name = name;
     }
 
-    public Color getCourseColor() {
+    public String getCourseColor() {
         return courseColor;
     }
 
-    public void setCourseColor(Color courseColor) {
+    public void setCourseColor(String courseColor) {
         this.courseColor = courseColor;
     }
 
@@ -74,20 +77,20 @@ public class CourseModel {
         this.active = active;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return this.startDate.toString();
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startDate) {
+        this.startDate = java.sql.Date.valueOf(startDate);
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public String getEndDate() {
+        return this.endDate.toString();
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEndDate(String endDate) {
+        this.endDate = java.sql.Date.valueOf(endDate);
     }
 
     public String toString(){

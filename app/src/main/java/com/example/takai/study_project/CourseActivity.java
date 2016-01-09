@@ -1,5 +1,6 @@
 package com.example.takai.study_project;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,15 +22,20 @@ import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class CourseActivity extends AppCompatActivity {
-    ArrayList<String> myArrayList = new ArrayList<>();
-    List<CourseModel> courseModels = new ArrayList<>();
-    long startDate;
-    long endDate;
+    ArrayList<String> myArrayList=
+            new ArrayList<String>();
+    List<CourseModel> courseModels = new ArrayList<CourseModel>();
+
     private CourseDataSource dataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,6 @@ public class CourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //Force compiler to stop whinging about the potential for a null pointer.
-        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dataSource = new CourseDataSource(this);
         try {
@@ -46,9 +50,14 @@ public class CourseActivity extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        startDate = 33333333;
-        endDate = 33333344;
-        dataSource.createData("sad", "2304ICT", "RED", true, startDate, endDate );
+        // add some dates to db(just for manual testing)
+        Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(cal.getTime());
+
+
+        dataSource.createData("sad", "2304ICT", "RED", true, date, date );
+
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
             myArrayList.add(courseModels.get(i).getName());
@@ -59,6 +68,7 @@ public class CourseActivity extends AppCompatActivity {
 
 
     }
+
 
 
     protected void onResume() {
