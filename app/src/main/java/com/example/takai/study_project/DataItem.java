@@ -24,7 +24,7 @@ public class DataItem {
         this.data = data;
     }
 
-    // Will be used by the ArrayAdapter in the ListView
+    // Will be used by the GeneralArrayAdapter in the ListView
     @Override
     public String toString() {
         return data;
