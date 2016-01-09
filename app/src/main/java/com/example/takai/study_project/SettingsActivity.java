@@ -1,6 +1,7 @@
 package com.example.takai.study_project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -44,7 +45,22 @@ public class SettingsActivity extends AppCompatActivity {
         listView.setAdapter(settingsListAdapter);
     }
 
-    public void savePreferences(View view) {
-
+    public void cellClicked(View view) {
+        if (view.getId() == preferences.getInt("account_cell_id", 0)) {
+            Intent intent = new Intent(this, SettingsAccountActivity.class);
+            startActivity(intent);
+        } else if (view.getId() == preferences.getInt("notification_cell_id", 0)) {
+            Intent intent = new Intent(this, SettingsNotificationActivity.class);
+            startActivity(intent);
+        } else if (view.getId() == preferences.getInt("course_cell_id", 0)) {
+            Intent intent = new Intent(this, SettingsCourseActivity.class);
+            startActivity(intent);
+        } else if (view.getId() == preferences.getInt("srs_cell_id", 0)) {
+            Intent intent = new Intent(this, SettingsSRSActivity.class);
+            startActivity(intent);
+        } else if (view.getId() == preferences.getInt("miscellaneous_cell_id", 0)) {
+            Intent intent = new Intent(this, SettingsMiscellaneousActivity.class);
+            startActivity(intent);
+        }
     }
 }

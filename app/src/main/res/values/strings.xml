@@ -27,4 +27,9 @@
     </string-array>
 
     <string name="preferences_file_key">com.example.takai.study_project.PREFERENCE_FILE_KEY</string>
+    <string name="title_activity_settings_notification">SettingsNotificationActivity</string>
+    <string name="title_activity_settings_account">SettingsAccountActivity</string>
+    <string name="title_activity_settings_course">SettingsCourseActivity</string>
+    <string name="title_activity_settings_srs">SettingsSRSActivity</string>
+    <string name="title_activity_settings_miscellaneous">SettingsMiscellaneousActivity</string>
 </resources>
