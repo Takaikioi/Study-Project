@@ -6,6 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SettingsMiscellaneousActivity extends AppCompatActivity {
 
@@ -15,17 +19,16 @@ public class SettingsMiscellaneousActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings_miscellaneous);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        List<String> miscellaneousSettings = Arrays.asList(getResources().getStringArray(R.array.settings_miscellaneous_array));
+        GeneralArrayAdapter arrayAdapter = new GeneralArrayAdapter(this, miscellaneousSettings);
+        ListView listView = (ListView) findViewById(R.id.settings_miscellaneous_listview);
+        listView.setAdapter(arrayAdapter);
     }
 
+    public void cellClicked(View view) {
+
+    }
 }

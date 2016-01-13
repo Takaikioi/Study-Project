@@ -1,35 +1,86 @@
 <resources>
-    <string name="app_name">Study-Project</string>
-    <string name="action_settings">Settings</string>
-    <string name="homeCourseButton">COURSE</string>
-    <string name="homeReviewButton">REVIEW</string>
-    <string name="homeCalendarButton">CALENDAR</string>
-    <string name="homeAssessmentButton">ASSESSMENT</string>
+    <!-- Ids -->
+        <!-- Settings Page -->
+            <item name="account_cell_id" type="id"/>
+            <item name="notification_cell_id" type="id"/>
+            <item name="course_cell_id" type="id"/>
+            <item name="srs_cell_id" type="id"/>
+            <item name="miscellaneous_cell_id" type="id"/>
+        
+        <!-- Miscellaneous Settings Page -->
+            <item name="miscellaneous_app_theme" type="id"/>
+            <item name="miscellaneous_silent_session" type="id"/>
+            <item name="miscellaneous_locked_session" type="id"/>
+            <item name="miscellaneous_screen_always_on" type="id"/>
 
-    <string name="title_activity_course_page">Course Page</string>
-    <string name="title_activity_time_table">TimeTable</string>
-    <string name="title_activity_review">Review</string>
-    <string name="title_activity_assessment">Assessment</string>
-    <string name="title_activity_settings">Settings</string>
+    <!-- Buttons -->
+        <string name="homeCourseButton">COURSE</string>
+        <string name="homeReviewButton">REVIEW</string>
+        <string name="homeCalendarButton">CALENDAR</string>
+        <string name="homeAssessmentButton">ASSESSMENT</string>
+        <string name="settings_confirm_button">SAVE CHANGES</string>
 
-    <string name="coursePageTextField">Course stuffs be here</string>
-    <string name="calendarPageTextField">Calendar stuffs be here</string>
-    <string name="reviewPageTextField">Review stuffs be here</string>
+    <!-- Arrays -->
+        <string-array name="settings_type_array">
+            <item>Account</item>
+            <item>Notification</item>
+            <item>Course</item>
+            <item>SRS</item>
+            <item>Miscellaneous</item>
+        </string-array>
+        <string-array name="settings_account_array">
+            <item>Username</item>
+            <item>Degree</item>
+            <item>Major</item>
+            <item>Institution</item>
+            <item>Auto-Sync</item>
+            <item>Donor Status</item>
+        </string-array>
+        <string-array name="settings_notification_array">
+            <item>Allow Notifications</item>
+            <item>Class Notifications</item>
+            <item>Assessment Notifications</item>
+            <item>Review Notifications</item>
+            <item>Personal Notifications</item>
+            <item>Lock-screen Notifications</item>
+            <item>Toolbar Notifications</item>
+            <item>Notification Threshold</item>
+            <item>Notification Scope</item>
+        </string-array>
+        <string-array name="settings_course_array">
+            <item>Colour</item>
+            <item>Active?</item>
+        </string-array>
+        <string-array name="settings_srs_array">
+            <item>Frequency</item>
+            <item>Vacation Mode</item>
+            <item>Review Times</item>
+        </string-array>
+        <string-array name="settings_miscellaneous_array">
+            <item>App Theme</item>
+            <item>Silent Session</item>
+            <item>Locked Session</item>
+            <item>Screen Always On</item>
+        </string-array>
 
-    <string name="settings_confirm_button">SAVE CHANGES</string>
-    <string name="settings_icon_description">Settings Icon</string>
-    <string-array name="settings_type_array">
-        <item>Account</item>
-        <item>Notification</item>
-        <item>Course</item>
-        <item>SRS</item>
-        <item>Miscellaneous</item>
-    </string-array>
+    <!-- Titles -->
+        <string name="app_name">Study-Project</string>
+        <string name="title_activity_settings_notification">SettingsNotificationActivity</string>
+        <string name="title_activity_settings_account">SettingsAccountActivity</string>
+        <string name="title_activity_settings_course">SettingsCourseActivity</string>
+        <string name="title_activity_settings_srs">SettingsSRSActivity</string>
+        <string name="title_activity_settings_miscellaneous">SettingsMiscellaneousActivity</string>
+        <string name="title_activity_course_page">Course Page</string>
+        <string name="title_activity_time_table">TimeTable</string>
+        <string name="title_activity_review">Review</string>
+        <string name="title_activity_assessment">Assessment</string>
+        <string name="title_activity_settings">Settings</string>
 
-    <string name="preferences_file_key">com.example.takai.study_project.PREFERENCE_FILE_KEY</string>
-    <string name="title_activity_settings_notification">SettingsNotificationActivity</string>
-    <string name="title_activity_settings_account">SettingsAccountActivity</string>
-    <string name="title_activity_settings_course">SettingsCourseActivity</string>
-    <string name="title_activity_settings_srs">SettingsSRSActivity</string>
-    <string name="title_activity_settings_miscellaneous">SettingsMiscellaneousActivity</string>
+    <!-- Miscellaneous -->
+        <string name="action_settings">Settings</string>
+        <string name="settings_icon_description">Settings Icon</string>
+        <string name="preferences_file_key">com.example.takai.study_project.PREFERENCE_FILE_KEY</string>
+        <string name="coursePageTextField">Course stuffs be here</string>
+        <string name="calendarPageTextField">Calendar stuffs be here</string>
+        <string name="reviewPageTextField">Review stuffs be here</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.example.takai.study_project;
 
 /**
- * Created by hephalump on 30/12/2015.
+ * Created by hephalump on 30/12/2015
  */
 public class DataItem {
 

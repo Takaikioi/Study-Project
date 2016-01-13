@@ -40,6 +40,8 @@ public class GeneralArrayAdapter extends android.widget.ArrayAdapter<String> {
         AdapterResourceManager adapterResourceManager = new AdapterResourceManager(context, names);
         if (parent.getId() == R.id.settings_listview) {
             rowView = adapterResourceManager.settingsResourceAllocation(position, parent);
+        } else if (parent.getId() == R.id.settings_miscellaneous_listview) {
+            rowView = adapterResourceManager.settingsMiscellaneousResourceAllocation(position, parent);
         } else {
             rowView = null;
         }

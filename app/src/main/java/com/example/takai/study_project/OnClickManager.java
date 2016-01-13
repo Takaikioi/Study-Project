@@ -21,15 +21,15 @@ public class OnClickManager {
 
     public Intent settingsResponse(View view, AppCompatActivity source) {
         Intent intent;
-        if (view.getId() == preferences.getInt("account_cell_id", 0)) {
+        if (view.getId() == R.id.account_cell_id) {
             intent = new Intent(source, SettingsAccountActivity.class);
-        } else if (view.getId() == preferences.getInt("notification_cell_id", 0)) {
+        } else if (view.getId() == R.id.notification_cell_id) {
             intent = new Intent(source, SettingsNotificationActivity.class);
-        } else if (view.getId() == preferences.getInt("course_cell_id", 0)) {
+        } else if (view.getId() == R.id.course_cell_id) {
             intent = new Intent(source, SettingsCourseActivity.class);
-        } else if (view.getId() == preferences.getInt("srs_cell_id", 0)) {
+        } else if (view.getId() == R.id.srs_cell_id) {
             intent = new Intent(source, SettingsSRSActivity.class);
-        } else if (view.getId() == preferences.getInt("miscellaneous_cell_id", 0)) {
+        } else if (view.getId() == R.id.miscellaneous_cell_id) {
             intent = new Intent(source, SettingsMiscellaneousActivity.class);
         } else {
             intent = null;
