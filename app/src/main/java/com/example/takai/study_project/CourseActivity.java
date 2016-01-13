@@ -1,6 +1,8 @@
 package com.example.takai.study_project;
 
 import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
@@ -20,6 +22,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.sql.SQLException;
@@ -32,7 +35,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-public class CourseActivity extends AppCompatActivity {
+public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
     ArrayList<String> myArrayList=
             new ArrayList<String>();
     List<CourseModel> courseModels = new ArrayList<CourseModel>();
@@ -50,13 +53,9 @@ public class CourseActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dialog = new YesNoDialog();
-                Bundle args = new Bundle();
-                args.putString("title", "harry potter");
-                args.putString("message", "get out");
-                dialog.setArguments(args);
-                dialog.setTargetFragment(dialog, 23);
-                dialog.show(getFragmentManager(), "tag");
+                FragmentManager manager = getFragmentManager();
+                CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+                editNameDialog.show(manager, "fragment_edit_name");
             }
         });
 
@@ -96,5 +95,9 @@ public class CourseActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    @Override
+    public void onFinishUserDialog(String courseName, String courseCode) {
+        Toast.makeText(this, "Hello, " + courseName + courseCode, Toast.LENGTH_SHORT).show();
+    }
 }
 
