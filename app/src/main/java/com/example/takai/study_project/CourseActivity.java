@@ -39,7 +39,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     ArrayList<String> myArrayList=
             new ArrayList<String>();
     List<CourseModel> courseModels = new ArrayList<CourseModel>();
-
+    CourseListAdapter courseListAdapter;
+    ListView listView;
     private CourseDataSource dataSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,27 +78,58 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         for(int i = 0; i < courseModels.size(); i++){
             myArrayList.add(courseModels.get(i).getName());
         }
-        CourseListAdapter courseListAdapter = new CourseListAdapter(this, myArrayList);
-        ListView listView = (ListView) findViewById(R.id.listView);
+         courseListAdapter = new CourseListAdapter(this, myArrayList);
+        listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(courseListAdapter);
 
-
+    dataSource.close();
     }
 
 
 
     protected void onResume() {
         super.onResume();
+        //dataSource = new CourseDataSource(this);
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        dataSource.close();
     }
 
     @Override
     public void onFinishUserDialog(String courseName, String courseCode) {
-        Toast.makeText(this, "Hello, " + courseName + courseCode, Toast.LENGTH_SHORT).show();
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(cal.getTime());
+
+        dataSource.createData(courseName, courseCode, "RED", true, date, date);
+        courseListAdapter.clear();
+        courseListAdapter.notifyDataSetChanged();
+        courseModels = dataSource.getAllDataItems();
+        for(int i = 0; i < courseModels.size(); i++){
+           // myArrayList.add(courseModels.get(i).getName());
+            courseListAdapter.add(courseModels.get(i).getName());
+        }
+
+//        courseListAdapter.clear();
+//        courseListAdapter.notifyDataSetChanged();
+//        courseListAdapter.addAll(myArrayList);
+        // courseListAdapter.notifyDataSetChanged();
+        //courseListAdapter.notifyDataSetChanged();
+        dataSource.close();
     }
 }
 
