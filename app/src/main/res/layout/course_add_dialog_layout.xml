@@ -10,20 +10,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Course"
-            android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:hint="Course"
-            android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="15dp"
             android:textStyle="bold"
             android:id="@+id/courseCode"
             />
@@ -32,10 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="15dp"
             android:textStyle="bold"
             />
 
@@ -43,14 +40,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="15dp"
             android:textStyle="bold"
+            android:id="@+id/courseName"
             />
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/buttonSubmit"
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

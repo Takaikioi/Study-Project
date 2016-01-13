@@ -96,8 +96,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     }
 
     @Override
-    public void onFinishUserDialog(String user) {
-        Toast.makeText(this, "Hello, " + user, Toast.LENGTH_SHORT).show();
+    public void onFinishUserDialog(String courseName, String courseCode) {
+        Toast.makeText(this, "Hello, " + courseName + courseCode, Toast.LENGTH_SHORT).show();
     }
 }
 

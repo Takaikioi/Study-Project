@@ -14,10 +14,12 @@ import android.widget.TextView;
  * Created by hephalump on 12/01/2016.
  */
 public class CourseDialogFragmentAdd extends DialogFragment implements TextView.OnEditorActionListener {
-    private EditText mEditText;
+    private EditText courseName;
+    private EditText courseCode;
+    private EditText courseActive;
 
     interface UserNameListener {
-        void onFinishUserDialog(String user);
+        void onFinishUserDialog(String name, String code);
     }
 
     public CourseDialogFragmentAdd(){
@@ -28,11 +30,14 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.course_add_dialog_layout, container);
-        mEditText = (EditText) view.findViewById(R.id.courseCode);
+        courseCode = (EditText) view.findViewById(R.id.courseCode);
+        courseName = (EditText) view.findViewById(R.id.courseName);
+
 
         // set this instance as callback for editor action
-        mEditText.setOnEditorActionListener(this);
-        mEditText.requestFocus();
+        courseCode.setOnEditorActionListener(this);
+        courseName.setOnEditorActionListener(this);
+        courseCode.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().setTitle("Please enter your details");
 
@@ -44,7 +49,7 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event){
         // return input text to activity
         UserNameListener activity = (UserNameListener) getActivity();
-        activity.onFinishUserDialog(mEditText.getText().toString());
+        activity.onFinishUserDialog(courseCode.getText().toString(), courseName.getText().toString());
         this.dismiss();
         return true;
     }
