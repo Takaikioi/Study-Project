@@ -38,8 +38,10 @@ import java.util.TimeZone;
 public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
 
     //array of strings for the names of the courses.
-    ArrayList<String> myArrayList=
+    ArrayList<String> myNameList=
             new ArrayList<String>();
+    ArrayList<String> myCodeList= new ArrayList<String>();
+    ArrayList<String> myColorList= new ArrayList<String>();
     // array of models for the data objects
     List<CourseModel> courseModels = new ArrayList<CourseModel>();
     // adapter for displaying the course content in the list
@@ -84,9 +86,12 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
 
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
-            myArrayList.add(courseModels.get(i).getName());
+            myNameList.add(courseModels.get(i).getName());
+            myCodeList.add(courseModels.get(i).getCode());
+            myColorList.add(courseModels.get(i).getCourseColor());
+
         }
-         courseListAdapter = new CourseListAdapter(this, myArrayList);
+         courseListAdapter = new CourseListAdapter(this, myNameList, myCodeList,myColorList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(courseListAdapter);
 

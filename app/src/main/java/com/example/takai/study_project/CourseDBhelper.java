@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by hephalump on 30/12/2015.
  */
 public class CourseDBhelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 9;
+    public static final int DATABASE_VERSION = 11;
     public static final String DATABASE_NAME = "CourseDatabase";
     public static final String COURSE_TABLE_NAME = "Course";
     public static final String COLUMN_ID = "_id";
