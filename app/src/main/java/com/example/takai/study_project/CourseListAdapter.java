@@ -43,7 +43,7 @@ public class CourseListAdapter extends ArrayAdapter<String> {
         TextView textViewName = (TextView) rowView.findViewById(R.id.courseNameText);
         TextView textViewCode = (TextView) rowView.findViewById(R.id.courseCodeText);
        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-        textViewName.setText("Course Name: " +names.get(position));
+        textViewName.setText(names.get(position));
         textViewCode.setText(codes.get(position));
 
 
