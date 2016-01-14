@@ -36,11 +36,21 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
-    ArrayList<String> myArrayList=
-            new ArrayList<String>();
-    List<CourseModel> courseModels = new ArrayList<CourseModel>();
 
+    //array of strings for the names of the courses.
+    ArrayList<String> myNameList=
+            new ArrayList<String>();
+    ArrayList<String> myCodeList= new ArrayList<String>();
+    ArrayList<String> myColorList= new ArrayList<String>();
+    // array of models for the data objects
+    List<CourseModel> courseModels = new ArrayList<CourseModel>();
+    // adapter for displaying the course content in the list
+    CourseListAdapter courseListAdapter;
+    ListView listView;
+    // database interface.
     private CourseDataSource dataSource;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +59,14 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // a button for to do the adding of course content
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager manager = getFragmentManager();
                 CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
-                editNameDialog.show(manager, "fragment_edit_name");
+                editNameDialog.show(manager, "fragment");
             }
         });
 
@@ -75,29 +86,63 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
 
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
-            myArrayList.add(courseModels.get(i).getName());
+            myNameList.add(courseModels.get(i).getName());
+            myCodeList.add(courseModels.get(i).getCode());
+            myColorList.add(courseModels.get(i).getCourseColor());
+
         }
-        CourseListAdapter courseListAdapter = new CourseListAdapter(this, myArrayList);
-        ListView listView = (ListView) findViewById(R.id.listView);
+         courseListAdapter = new CourseListAdapter(this, myNameList, myCodeList,myColorList);
+        listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(courseListAdapter);
 
-
+    dataSource.close();
     }
 
-
+    //TODO add a proper layout and better display of resources, update fab to add extra options
 
     protected void onResume() {
         super.onResume();
+        //dataSource = new CourseDataSource(this);
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        dataSource.close();
     }
 
     @Override
     public void onFinishUserDialog(String courseName, String courseCode) {
-        Toast.makeText(this, "Hello, " + courseName + courseCode, Toast.LENGTH_SHORT).show();
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(cal.getTime());
+
+        dataSource.createData(courseName, courseCode, "RED", true, date, date);
+        courseListAdapter.clear();
+        courseListAdapter.notifyDataSetChanged();
+        courseModels = dataSource.getAllDataItems();
+        for(int i = 0; i < courseModels.size(); i++){
+           // myArrayList.add(courseModels.get(i).getName());
+            courseListAdapter.add(courseModels.get(i).getName());
+        }
+
+//        courseListAdapter.clear();
+//        courseListAdapter.notifyDataSetChanged();
+//        courseListAdapter.addAll(myArrayList);
+        // courseListAdapter.notifyDataSetChanged();
+        //courseListAdapter.notifyDataSetChanged();
+        dataSource.close();
     }
 }
 

@@ -5,20 +5,10 @@ package com.example.takai.study_project;
  */
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.database.DataSetObserver;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,7 +19,7 @@ public class GeneralArrayAdapter extends android.widget.ArrayAdapter<String> {
     SharedPreferences.Editor prefEditor;
 
     public GeneralArrayAdapter(Activity context, List<String> names) {
-        super(context, R.layout.rowlayout, names);
+        super(context, R.layout.course_row_layout, names);
         this.context = context;
         this.names = names;
     }
