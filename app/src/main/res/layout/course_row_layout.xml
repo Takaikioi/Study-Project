@@ -28,4 +28,5 @@
         android:layout_alignEnd="@+id/courseNameText"
         android:id="@+id/courseCodeText" />
 
+
 </RelativeLayout>

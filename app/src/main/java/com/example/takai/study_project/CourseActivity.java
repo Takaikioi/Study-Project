@@ -40,10 +40,13 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     //array of strings for the names of the courses.
     ArrayList<String> myNameList=
             new ArrayList<String>();
-    ArrayList<String> myCodeList= new ArrayList<String>();
-    ArrayList<String> myColorList= new ArrayList<String>();
+    ArrayList<String> myCodeList =
+            new ArrayList<String>();
+    ArrayList<String> myColorList =
+            new ArrayList<String>();
     // array of models for the data objects
-    List<CourseModel> courseModels = new ArrayList<CourseModel>();
+    List<CourseModel> courseModels =
+            new ArrayList<CourseModel>();
     // adapter for displaying the course content in the list
     CourseListAdapter courseListAdapter;
     ListView listView;
@@ -89,7 +92,6 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
             myNameList.add(courseModels.get(i).getName());
             myCodeList.add(courseModels.get(i).getCode());
             myColorList.add(courseModels.get(i).getCourseColor());
-
         }
          courseListAdapter = new CourseListAdapter(this, myNameList, myCodeList,myColorList);
         listView = (ListView) findViewById(R.id.listView);
@@ -117,7 +119,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     }
 
     @Override
-    public void onFinishUserDialog(String courseName, String courseCode) {
+    public void onFinishUserDialog(String courseName, String courseCode, String colour) {
         try {
             dataSource.open();
         } catch (SQLException e) {
@@ -128,20 +130,26 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFormat.format(cal.getTime());
 
-        dataSource.createData(courseName, courseCode, "RED", true, date, date);
+        dataSource.createData(courseName, courseCode, colour, true, date, date);
         courseListAdapter.clear();
-        courseListAdapter.notifyDataSetChanged();
+       // courseListAdapter.notifyDataSetChanged();
         courseModels = dataSource.getAllDataItems();
+        myNameList.clear();
+        myCodeList.clear();
+        myColorList.clear();
         for(int i = 0; i < courseModels.size(); i++){
-           // myArrayList.add(courseModels.get(i).getName());
-            courseListAdapter.add(courseModels.get(i).getName());
+            myNameList.add(courseModels.get(i).getName());
+            myCodeList.add(courseModels.get(i).getCode());
+            myColorList.add(courseModels.get(i).getCourseColor());
         }
 
-//        courseListAdapter.clear();
-//        courseListAdapter.notifyDataSetChanged();
-//        courseListAdapter.addAll(myArrayList);
-        // courseListAdapter.notifyDataSetChanged();
-        //courseListAdapter.notifyDataSetChanged();
+        //courseListAdapter = new CourseListAdapter(this, myNameList, myCodeList,myColorList);
+//        for(int i = 0; i < courseModels.size(); i++){
+//            courseListAdapter.add(courseModels.get(i).getName());
+////            courseListAdapter.add(courseModels.get(i).getCode());
+////            courseListAdapter.add(courseModels.get(i).getCourseColor());
+//        }
+
         dataSource.close();
     }
 }
