@@ -65,27 +65,20 @@ public class AdapterResourceManager {
     public View settingsMiscellaneousResourceAllocation(int position, ViewGroup parent) {
         int resource;
         String settingName = names.get(position);
-        View rowView = inflater.inflate(R.layout.settings_row_layout, parent, false);
+        View rowView = inflater.inflate(R.layout.settings_miscellaneous_row_layout, parent, false);
         TextView textView = (TextView) rowView.findViewById(R.id.textView);
         textView.setText(settingName);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView);
         switch (settingName) {
-            case "App Theme":           resource = R.drawable.ic_account_circle_black_24dp;
-                                        rowView.setId(R.id.miscellaneous_app_theme);
+            case "App Theme":           rowView.setId(R.id.miscellaneous_app_theme);
                                         break;
-            case "Silent Session":      resource = R.drawable.ic_notifications_black_24dp;
-                                        rowView.setId(R.id.miscellaneous_silent_session);
+            case "Silent Session":      rowView.setId(R.id.miscellaneous_silent_session);
                                         break;
-            case "Locked Session":      resource = R.drawable.ic_school_black_24dp;
-                                        rowView.setId(R.id.miscellaneous_locked_session);
+            case "Locked Session":      rowView.setId(R.id.miscellaneous_locked_session);
                                         break;
-            case "Screen Always On":    resource = R.drawable.ic_watch_later_black_24dp;
-                                        rowView.setId(R.id.miscellaneous_screen_always_on);
+            case "Screen Always On":    rowView.setId(R.id.miscellaneous_screen_always_on);
                                         break;
-            default:                    resource = R.drawable.ic_error_black_24dp;
-                                        break;
+            default:                    break;
         }
-        imageView.setImageResource(resource);
         return rowView;
     }
 }

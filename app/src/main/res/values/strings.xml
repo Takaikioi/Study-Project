@@ -19,6 +19,8 @@
         <string name="homeCalendarButton">CALENDAR</string>
         <string name="homeAssessmentButton">ASSESSMENT</string>
         <string name="settings_confirm_button">SAVE CHANGES</string>
+        <string name="settings_miscellaneous_colour_dialog_positive_button">Select</string>
+        <string name="settings_miscellaneous_colour_dialog_negative_button">Cancel</string>
 
     <!-- Arrays -->
         <string-array name="settings_type_array">
@@ -64,17 +66,115 @@
         </string-array>
 
     <!-- Titles -->
-        <string name="app_name">Study-Project</string>
-        <string name="title_activity_settings_notification">SettingsNotificationActivity</string>
-        <string name="title_activity_settings_account">SettingsAccountActivity</string>
-        <string name="title_activity_settings_course">SettingsCourseActivity</string>
-        <string name="title_activity_settings_srs">SettingsSRSActivity</string>
-        <string name="title_activity_settings_miscellaneous">SettingsMiscellaneousActivity</string>
-        <string name="title_activity_course_page">Course Page</string>
-        <string name="title_activity_time_table">TimeTable</string>
-        <string name="title_activity_review">Review</string>
-        <string name="title_activity_assessment">Assessment</string>
-        <string name="title_activity_settings">Settings</string>
+
+        <!-- Content -->
+            <string name="title_activity_course_page">Course Page</string>
+            <string name="title_activity_time_table">TimeTable</string>
+            <string name="title_activity_review">Review</string>
+            <string name="title_activity_assessment">Assessment</string>
+            <string name="title_activity_settings">Settings</string>
+
+        <!-- Settings -->
+            <string name="app_name">Study-Project</string>
+            <string name="title_activity_settings_notification">Notification Settings</string>
+            <string name="title_activity_settings_account">Account Settings</string>
+            <string name="title_activity_settings_course">Course Settings</string>
+            <string name="title_activity_settings_srs">SRS Settings</string>
+            <string name="title_activity_settings_miscellaneous">Miscellaneous Settings</string>
+
+        <!-- Account Settings -->
+            <string name="title_account_preferences_user">User Details</string>
+            <string name="title_account_preferences_other">Online</string>
+
+        <!-- Notification Settings -->
+            <string name="title_notifications_preferences">Global Notifications Preferences</string>
+
+        <!-- Course Settings -->
+            <string name="title_course_preferences">Course Preferences</string>
+
+        <!-- SRS Settings -->
+            <string name="title_srs_preferences">Spaced Repetition System</string>
+
+        <!-- Miscellaneous Settings -->
+            <string name="title_miscellaneous_preferences_colour">Colour Theme</string>
+            <string name="title_miscellaneous_preferences_other">Review Settings</string>
+
+    <!-- Summaries -->
+
+        <!-- Account Settings -->
+            <string name="summary_account_username">Username</string>
+            <string name="summary_account_degree">Degree</string>
+            <string name="summary_account_major">Major</string>
+            <string name="summary_account_institution">Institution</string>
+            <string name="summary_account_autosync">Auto-Sync</string>
+            <string name="summary_account_donor_status">Donor Status</string>
+
+        <!-- Notification Settings -->
+            <string name="summary_notifications_global_allow">Allow Notifications</string>
+            <string name="summary_notifications_class">Class Notifications</string>
+            <string name="summary_notifications_assessment">Assessment Notifications</string>
+            <string name="summary_notifications_review">Review Notifications</string>
+            <string name="summary_notifications_personal">Personal Notifications</string>
+            <string name="summary_notifications_lockscreen">Lock-screen Notifications</string>
+            <string name="summary_notifications_statusbar">Toolbar Notifications</string>
+            <string name="summary_notifications_threshold">Notification Threshold</string>
+            <string name="summary_notifications_scope">Notification Scope</string>
+
+        <!-- Course Settings -->
+            <string name="summary_course_colour">Colour</string>
+            <string name="summary_course_active">Active?</string>
+
+        <!-- SRS Settings -->
+            <string name="summary_srs_frequency">Frequency</string>
+            <string name="summary_srs_vacation_mode">Vacation Mode</string>
+            <string name="summary_srs_review_timing">Review Times</string>
+
+        <!-- Miscellaneous Settings -->
+            <string name="summary_colour_preference">Colour pickers for choosing an app theme</string>
+            <string name="summary_silent_session">Silence phone during review sessions</string>
+            <string name="summary_locked_session">Turn off phone functionality during review sessions</string>
+            <string name="summary_screen_activity">Prevent phone backlight dim during review sessions</string>
+
+    <!-- ListView Items -->
+
+        <!-- Account Settings -->
+            <string name="item_account_username">Username</string>
+            <string name="item_account_degree">Degree</string>
+            <string name="item_account_major">Major</string>
+            <string name="item_account_institution">Institution</string>
+            <string name="item_account_autosync">Auto-Sync</string>
+            <string name="item_account_donor_status">Donor Status</string>
+
+        <!-- Notification Settings -->
+            <string name="item_notifications_global_allow">Allow Notifications</string>
+            <string name="item_notifications_class">Class Notifications</string>
+            <string name="item_notifications_assessment">Assessment Notifications</string>
+            <string name="item_notifications_review">Review Notifications</string>
+            <string name="item_notifications_personal">Personal Notifications</string>
+            <string name="item_notifications_lockscreen">Lock-screen Notifications</string>
+            <string name="item_notifications_statusbar">Toolbar Notifications</string>
+            <string name="item_notifications_threshold">Notification Threshold</string>
+            <string name="item_notifications_scope">Notification Scope</string>
+
+        <!-- Course Settings -->
+            <string name="item_course_colour">Colour</string>
+            <string name="item_course_active">Active?</string>
+
+        <!-- SRS Settings -->
+            <string name="item_srs_frequency">Frequency</string>
+            <string name="item_srs_vacation_mode">Vacation Mode</string>
+            <string name="item_srs_review_timing">Review Times</string>
+
+        <!-- Miscellaneous Settings -->
+            <string name="item_colour_preference_courses">Course Screen Colour</string>
+            <string name="item_colour_preference_timetable">Timetable Screen Colour</string>
+            <string name="item_colour_preference_review">Review Screen Colour</string>
+            <string name="item_colour_preference_assessments">Assessments Screen Colour</string>
+            <string name="item_colour_preference_toolbar">Toolbar Colour</string>
+            <string name="item_other_preference_silent_session">Silent Session</string>
+            <string name="item_other_preference_locked_session">Locked Session</string>
+            <string name="item_other_preference_screen_activity">Screen Activity</string>
+
 
     <!-- Miscellaneous -->
         <string name="action_settings">Settings</string>

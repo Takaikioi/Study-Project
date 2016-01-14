@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:onClick="cellClicked">
+    android:onClick="colourCellClicked"
+    android:clickable="true">
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:gravity="right"
+        android:gravity="left|center_vertical"
         android:layout_gravity="center_vertical"
         android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView2"
+        android:background="#e31212"
+        android:layout_gravity="center_vertical" />
 
 </LinearLayout>
