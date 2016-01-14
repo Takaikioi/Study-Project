@@ -21,7 +21,7 @@ import java.util.List;
 public class CourseListAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final List<String> names;
-
+//TODO port to the general adapter
 //    static class ViewHolder {
 //        public TextView text;
 //        public ImageView image;

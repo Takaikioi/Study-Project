@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by hephalump on 30/12/2015.
  */
 public class CourseDBhelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 8;
+    public static final int DATABASE_VERSION = 9;
     public static final String DATABASE_NAME = "CourseDatabase";
     public static final String COURSE_TABLE_NAME = "Course";
     public static final String COLUMN_ID = "_id";
@@ -51,7 +51,7 @@ public class CourseDBhelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + COURSE_TABLE_NAME);
         onCreate(db);
     }
-
+    //TODO add extra crud methods
     public boolean insertData(String name, String code, String courseColor, boolean active, Long startDate, Long endDate)
     {
         SQLiteDatabase db = this.getWritableDatabase();

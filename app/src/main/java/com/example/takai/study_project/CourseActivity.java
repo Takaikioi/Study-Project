@@ -36,12 +36,19 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
+
+    //array of strings for the names of the courses.
     ArrayList<String> myArrayList=
             new ArrayList<String>();
+    // array of models for the data objects
     List<CourseModel> courseModels = new ArrayList<CourseModel>();
+    // adapter for displaying the course content in the list
     CourseListAdapter courseListAdapter;
     ListView listView;
+    // database interface.
     private CourseDataSource dataSource;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +57,14 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // a button for to do the adding of course content
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager manager = getFragmentManager();
                 CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
-                editNameDialog.show(manager, "fragment_edit_name");
+                editNameDialog.show(manager, "fragment");
             }
         });
 
@@ -85,7 +93,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     dataSource.close();
     }
 
-
+    //TODO add a proper layout and better display of resources, update fab to add extra options
 
     protected void onResume() {
         super.onResume();
