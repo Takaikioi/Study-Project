@@ -60,7 +60,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/picker"
         android:layout_width="match_parent"
-        android:layout_height="20udp"
+        android:layout_height="20dp"
         app:orientation="horizontal"
         android:layout_below="@+id/courseName"
         android:layout_alignParentLeft="true"
