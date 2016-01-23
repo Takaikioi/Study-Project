@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Space;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,14 +21,14 @@ public class CourseListAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final List<String> names;
     private final List<String> codes;
-    private final List<String> colors;
+    private final List<Integer> colors;
 //TODO port to the general adapter
 //    static class ViewHolder {
 //        public TextView text;
 //        public ImageView image;
 //    }
 
-    public CourseListAdapter(Activity context, List<String> names, List<String> codes, List<String> colors) {
+    public CourseListAdapter(Activity context, List<String> names, List<String> codes, List<Integer> colors) {
         super(context, R.layout.course_row_layout, names);
         this.context = context;
         this.names = names;
@@ -39,9 +41,11 @@ public class CourseListAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.course_row_layout, parent, false);
-        rowView.setBackgroundColor(Color.parseColor(colors.get(position)));
+        //rowView.setBackgroundColor(colors.get(position));
         TextView textViewName = (TextView) rowView.findViewById(R.id.courseNameText);
         TextView textViewCode = (TextView) rowView.findViewById(R.id.courseCodeText);
+        ImageView colorDisplay = (ImageView) rowView.findViewById(R.id.imageView3);
+        colorDisplay.setBackgroundColor(colors.get(position));
        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         textViewName.setText(names.get(position));
         textViewCode.setText(codes.get(position));

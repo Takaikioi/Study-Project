@@ -42,8 +42,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
             new ArrayList<String>();
     ArrayList<String> myCodeList =
             new ArrayList<String>();
-    ArrayList<String> myColorList =
-            new ArrayList<String>();
+    ArrayList<Integer> myColorList =
+            new ArrayList<Integer>();
     // array of models for the data objects
     List<CourseModel> courseModels =
             new ArrayList<CourseModel>();
@@ -119,7 +119,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     }
 
     @Override
-    public void onFinishUserDialog(String courseName, String courseCode, String colour) {
+    public void onFinishUserDialog(String courseName, String courseCode, int colour) {
         try {
             dataSource.open();
         } catch (SQLException e) {

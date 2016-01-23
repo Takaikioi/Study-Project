@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by hephalump on 30/12/2015.
  */
 public class CourseDBhelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 13;
+    public static final int DATABASE_VERSION = 17;
     public static final String DATABASE_NAME = "CourseDatabase";
     public static final String COURSE_TABLE_NAME = "Course";
     public static final String COLUMN_ID = "_id";
@@ -29,7 +29,7 @@ public class CourseDBhelper extends SQLiteOpenHelper {
     private static final String DB_TABLE_CREATE ="create table "
             + COURSE_TABLE_NAME + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COURSE_NAME_COLUMN
-            + " text not null, " + COURSE_CODE_COLUMN + " text not null, " +COURSE_COLOUR_COLUMN+ " text not null, " +COURSE_ACTIVE_COLUMN+
+            + " text not null, " + COURSE_CODE_COLUMN + " text not null, " +COURSE_COLOUR_COLUMN+ " int not null, " +COURSE_ACTIVE_COLUMN+
             " bool not null, " + COURSE_START_DATE_COLUMN + "  text, "+COURSE_END_DATE_COLUMN+" text );";
 
 

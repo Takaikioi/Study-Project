@@ -13,13 +13,13 @@ public class CourseModel {
     private long courseID;
     private String code;
     private String name;
-    private String courseColor;
+    private Integer courseColor;
     private boolean active;
     private Date startDate;
     private Date endDate;
     private SimpleDateFormat simpleStartDate = new SimpleDateFormat("yyyy-MM-dd");
 
-    public CourseModel(String code, String name, String courseColor, boolean active, Date startDate, Date endDate){
+    public CourseModel(String code, String name, int courseColor, boolean active, Date startDate, Date endDate){
         this.code = code;
         this.name = name;
         this.courseColor = courseColor;
@@ -28,7 +28,7 @@ public class CourseModel {
         this.endDate = endDate;
     }
 
-    public CourseModel(String code, String name, String courseColor, Date startDate){
+    public CourseModel(String code, String name, int courseColor, Date startDate){
         this.code = code;
         this.name = name;
         this.courseColor = courseColor;
@@ -61,11 +61,11 @@ public class CourseModel {
         this.name = name;
     }
 
-    public String getCourseColor() {
+    public int getCourseColor() {
         return courseColor;
     }
 
-    public void setCourseColor(String courseColor) {
+    public void setCourseColor(int courseColor) {
         this.courseColor = courseColor;
     }
 

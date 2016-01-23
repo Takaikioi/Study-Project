@@ -56,6 +56,15 @@
             android:layout_below="@+id/textView3"
             android:layout_alignRight="@+id/buttonSubmit"
             android:layout_alignEnd="@+id/buttonSubmit" />
+    <uz.shift.colorpicker.LineColorPicker
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:orientation="horizontal"
+        android:layout_below="@+id/courseName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -67,13 +76,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="140dp" />
-    <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
-        android:id="@+id/shadeslider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+
 
 
 </RelativeLayout>
