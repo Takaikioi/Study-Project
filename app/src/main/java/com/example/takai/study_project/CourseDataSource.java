@@ -34,7 +34,7 @@ public class CourseDataSource {
         dbHelper.close();
     }
 
-    public CourseModel createData (String name, String code, String courseColor, boolean active, String startDate, String endDate) {
+    public CourseModel createData (String name, String code, int courseColor, boolean active, String startDate, String endDate) {
         ContentValues values = new ContentValues();
         values.put(CourseDBhelper.COURSE_NAME_COLUMN, name);
         values.put(CourseDBhelper.COURSE_CODE_COLUMN, code);
@@ -84,7 +84,7 @@ public class CourseDataSource {
         courseModel.setId(cursor.getLong(0));
         courseModel.setName(cursor.getString(1));
         courseModel.setCode(cursor.getString(2));
-        courseModel.setCourseColor(cursor.getString(3));
+        courseModel.setCourseColor(cursor.getInt(3));
         if(cursor.getString(4) == "true"){
             courseModel.setActive(true);
         }else if(cursor.getString(4) == "false"){
