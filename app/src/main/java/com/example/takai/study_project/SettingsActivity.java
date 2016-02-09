@@ -13,28 +13,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
+import com.example.android.supportv7.app.AppCompatPreferenceActivity;
 import java.util.Arrays;
 import java.util.List;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatPreferenceActivity {
 
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_settings);
+//        final Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+//        setSupportActionBar(toolbar);
+//
+//        getFragmentManager().beginTransaction().replace(R.id.content_frame, new PreferencesFragment()).commit();
+//    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.preference_headers, target);
+
         setContentView(R.layout.activity_settings);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        getFragmentManager().beginTransaction().replace(R.id.content_frame, new PreferencesFragment()).commit();
+        android.support.v7.app.ActionBar bar = getSupportActionBar();
+        bar.setHomeButtonEnabled(true);
+        bar.setDisplayHomeAsUpEnabled(true);
+        bar.setDisplayShowTitleEnabled(true);
+        bar.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        bar.setTitle("Settings");
     }
-//    @Override
-//    public void onBuildHeaders(List<Header> target) {
-//        loadHeadersFromResource(R.xml.preference_headers, target);
-//    }
 
-//    @Override
-//    protected boolean isValidFragment(String fragmentName) {
-//        return SettingsFragment.class.getName().equals(fragmentName);
-//    }
+    @Override
+    protected boolean isValidFragment(String fragmentName) {
+        return SettingsFragment.class.getName().equals(fragmentName);
+    }
 }
