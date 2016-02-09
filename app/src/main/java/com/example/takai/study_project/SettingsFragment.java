@@ -40,7 +40,7 @@ public class SettingsFragment extends PreferenceFragment{
         View layout = inflater.inflate(R.layout.activity_settings, container, false);
         if (layout != null) {
             AppCompatPreferenceActivity activity = (AppCompatPreferenceActivity) getActivity();
-            Toolbar toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
+            Toolbar toolbar = (Toolbar) layout.findViewById(R.id.tool_bar);
             activity.setSupportActionBar(toolbar);
 
             ActionBar bar = activity.getSupportActionBar();
