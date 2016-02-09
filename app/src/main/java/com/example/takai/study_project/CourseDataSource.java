@@ -76,6 +76,7 @@ public class CourseDataSource {
         cursor.close();
         return courseModels;
     }
+
     //TODO revise data access methods.
     private CourseModel cursorToCourseModel(Cursor cursor) {
         int numCol = cursor.getColumnCount();
@@ -94,5 +95,12 @@ public class CourseDataSource {
         courseModel.setEndDate(cursor.getString(6));
 
         return courseModel;
+    }
+
+    public int getNumberOfElements(){
+        Cursor cursor = database.query(CourseDBhelper.COURSE_TABLE_NAME,
+                allColumns, null, null, null, null, null);
+        int numRows = cursor.getColumnCount();
+        return numRows;
     }
 }
