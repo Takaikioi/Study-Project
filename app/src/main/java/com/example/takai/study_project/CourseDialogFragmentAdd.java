@@ -46,8 +46,10 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
         submitButton = (Button) view.findViewById(R.id.buttonSubmit);
         colorPicker = (LineColorPicker) view.findViewById(R.id.picker);
         // set color palette
-        colorPicker.setColors(new int[] {Color.parseColor("#F44336"),Color.parseColor("#673AB7"),Color.parseColor("#2196F3"),
-                Color.parseColor("#E91E63"),Color.parseColor("#FFEB3B")});
+        colorPicker.setColors(new int[] {Color.parseColor("#E91E63"), Color.parseColor("#F44336"), Color.parseColor("#FF5722"),
+                Color.parseColor("#FF9800"), Color.parseColor("#FFC107"), Color.parseColor("#8BC34A"), Color.parseColor("#4CAF50"),
+                Color.parseColor("#009688"), Color.parseColor("#00BCD4"), Color.parseColor("#03A9F4"), Color.parseColor("#2196F3"),
+                Color.parseColor("#3F51B5"), Color.parseColor("#673AB7"), Color.parseColor("#9C27B0")});
         colorPicker.setSelectedColor(Color.parseColor("#F44336"));
 
 // set on change listener
