@@ -17,7 +17,7 @@ import com.larswerkman.lobsterpicker.adapters.BitmapColorAdapter;
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
 
 /**
- * Created by hephalump on 12/01/2016.
+ * Created by hephalump on 12/01/2016
  */
 public class CourseDialogFragmentAdd extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText courseName;

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/title_activity_settings_srs">>
+    <PreferenceCategory
+        android:title="@string/title_srs_preferences">
+        <CheckBoxPreference
+            android:title="@string/item_srs_frequency"
+            android:summary="@string/summary_srs_frequency"/>
+        <CheckBoxPreference
+            android:title="@string/item_srs_vacation_mode"
+            android:summary="@string/summary_srs_vacation_mode"/>
+        <CheckBoxPreference
+            android:title="@string/item_srs_review_timing"
+            android:summary="@string/summary_srs_review_timing"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

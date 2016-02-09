@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    android:title="@string/title_activity_settings_miscellaneous"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">>
+    <PreferenceCategory
+        android:title="@string/title_miscellaneous_preferences_colour"
+        android:summary="@string/summary_colour_preference">
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="toolbarColourPreference"
+            android:title="@string/item_colour_preference_toolbar"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000" />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="courseColourPreference"
+            android:title="@string/item_colour_preference_courses"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000" />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="reviewColourPreference"
+            android:title="@string/item_colour_preference_review"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000" />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="timetableColourPreference"
+            android:title="@string/item_colour_preference_timetable"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000" />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="assessmentColourPreference"
+            android:title="@string/item_colour_preference_assessments"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/title_miscellaneous_preferences_other">
+        <CheckBoxPreference
+            android:title="@string/item_other_preference_silent_session"
+            android:summary="@string/summary_silent_session"/>
+        <CheckBoxPreference
+            android:title="@string/item_other_preference_locked_session"
+            android:summary="@string/summary_locked_session"/>
+        <CheckBoxPreference
+            android:title="@string/item_other_preference_screen_activity"
+            android:summary="@string/summary_screen_activity"/>
+    </PreferenceCategory>
+</PreferenceScreen>

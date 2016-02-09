@@ -8,7 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 /**
- * Created by hephalump on 5/01/2016.
+ * Created by hephalump on 5/01/2016
  */
 public class YesNoDialog extends DialogFragment
 {

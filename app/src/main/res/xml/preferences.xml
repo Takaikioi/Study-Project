@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceScreen
         android:title="@string/title_activity_settings_account">
         <PreferenceCategory
             android:title="@string/title_account_preferences_user">
-            <CheckBoxPreference
+            <EditTextPreference
                 android:title="@string/item_account_username"
                 android:summary="@string/summary_account_username"/>
-            <CheckBoxPreference
+            <EditTextPreference
                 android:title="@string/item_account_degree"
                 android:summary="@string/summary_account_username"/>
-            <CheckBoxPreference
+            <EditTextPreference
                 android:title="@string/item_account_major"
                 android:summary="@string/summary_account_username"/>
-            <CheckBoxPreference
+            <EditTextPreference
                 android:title="@string/item_account_institution"
                 android:summary="@string/summary_account_username"/>
         </PreferenceCategory>
@@ -23,7 +24,7 @@
             <CheckBoxPreference
                 android:title="@string/item_account_autosync"
                 android:summary="@string/summary_account_autosync"/>
-            <CheckBoxPreference
+            <Preference
                 android:title="@string/item_account_donor_status"
                 android:summary="@string/summary_account_donor_status"/>
         </PreferenceCategory>

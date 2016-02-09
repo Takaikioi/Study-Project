@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/title_activity_settings_notification">
+    <PreferenceCategory
+        android:title="@string/title_notifications_preferences">
+        <CheckBoxPreference
+            android:title="@string/item_notifications_global_allow"
+            android:summary="@string/summary_notifications_global_allow"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_class"
+            android:summary="@string/summary_notifications_class"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_assessment"
+            android:summary="@string/summary_notifications_assessment"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_review"
+            android:summary="@string/summary_notifications_review"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_personal"
+            android:summary="@string/summary_notifications_personal"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_lockscreen"
+            android:summary="@string/summary_notifications_lockscreen"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_statusbar"
+            android:summary="@string/summary_notifications_statusbar"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_threshold"
+            android:summary="@string/summary_notifications_threshold"/>
+        <CheckBoxPreference
+            android:title="@string/item_notifications_scope"
+            android:summary="@string/summary_notifications_scope"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

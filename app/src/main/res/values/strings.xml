@@ -68,19 +68,19 @@
     <!-- Titles -->
 
         <!-- Content -->
-            <string name="title_activity_course_page">Course Page</string>
-            <string name="title_activity_time_table">TimeTable</string>
+            <string name="title_activity_course_page">Courses</string>
+            <string name="title_activity_time_table">Timetable</string>
             <string name="title_activity_review">Review</string>
             <string name="title_activity_assessment">Assessment</string>
             <string name="title_activity_settings">Settings</string>
 
         <!-- Settings -->
             <string name="app_name">Study-Project</string>
-            <string name="title_activity_settings_notification">Notification Settings</string>
-            <string name="title_activity_settings_account">Account Settings</string>
-            <string name="title_activity_settings_course">Course Settings</string>
-            <string name="title_activity_settings_srs">SRS Settings</string>
-            <string name="title_activity_settings_miscellaneous">Miscellaneous Settings</string>
+            <string name="title_activity_settings_notification">Notifications</string>
+            <string name="title_activity_settings_account">Account</string>
+            <string name="title_activity_settings_course">Course</string>
+            <string name="title_activity_settings_srs">SRS</string>
+            <string name="title_activity_settings_miscellaneous">Miscellaneous</string>
 
         <!-- Account Settings -->
             <string name="title_account_preferences_user">User Details</string>
@@ -102,6 +102,7 @@
     <!-- Summaries -->
 
         <!-- Account Settings -->
+            <string name="summary_account_settings">Account/Profile Settings</string>
             <string name="summary_account_username">Display name used within the app</string>
             <string name="summary_account_degree">Chosen degree/study path</string>
             <string name="summary_account_major">Major within your course of study</string>
@@ -110,26 +111,30 @@
             <string name="summary_account_donor_status">Donate to gain special perks!</string>
 
         <!-- Notification Settings -->
-            <string name="summary_notifications_global_allow">Allow Notifications</string>
-            <string name="summary_notifications_class">Class Notifications</string>
-            <string name="summary_notifications_assessment">Assessment Notifications</string>
-            <string name="summary_notifications_review">Review Notifications</string>
-            <string name="summary_notifications_personal">Personal Notifications</string>
-            <string name="summary_notifications_lockscreen">Lock-screen Notifications</string>
-            <string name="summary_notifications_statusbar">Toolbar Notifications</string>
-            <string name="summary_notifications_threshold">Notification Threshold</string>
-            <string name="summary_notifications_scope">Notification Scope</string>
+            <string name="summary_notifications_settings">Notification/Reminder Settings</string>
+            <string name="summary_notifications_global_allow">Enable notifications</string>
+            <string name="summary_notifications_class">Enable notifications for upcoming classes</string>
+            <string name="summary_notifications_assessment">Enable notifications for upcoming assessments</string>
+            <string name="summary_notifications_review">Enable notifications for upcoming/due review sessions</string>
+            <string name="summary_notifications_personal">Enable notifications for upcoming personal events</string>
+            <string name="summary_notifications_lockscreen">Enable notifications on your device\'s lock screen</string>
+            <string name="summary_notifications_statusbar">Enable notifications in your device\'s status bar</string>
+            <string name="summary_notifications_threshold">Maximum number of notifications per day</string>
+            <string name="summary_notifications_scope">Maximum time until event, for notifications to still occur</string>
 
         <!-- Course Settings -->
-            <string name="summary_course_colour">Colour</string>
-            <string name="summary_course_active">Active?</string>
+            <string name="summary_course_settings">Course Settings</string>
+            <string name="summary_course_colour">Colour for the course</string>
+            <string name="summary_course_active">Uncheck when course complete</string>
 
         <!-- SRS Settings -->
-            <string name="summary_srs_frequency">Frequency</string>
-            <string name="summary_srs_vacation_mode">Vacation Mode</string>
-            <string name="summary_srs_review_timing">Review Times</string>
+            <string name="summary_srs_settings">Spaced Repetition Settings</string>
+            <string name="summary_srs_frequency">Increase for more frequent study</string>
+            <string name="summary_srs_vacation_mode">Enable to turn off reviews temporarily</string>
+            <string name="summary_srs_review_timing">Only generate reviews during a certain period</string>
 
         <!-- Miscellaneous Settings -->
+            <string name="summary_miscellaneous_settings">Other Settings</string>
             <string name="summary_colour_preference">Colour pickers for choosing an app theme</string>
             <string name="summary_silent_session">Silence phone during review sessions</string>
             <string name="summary_locked_session">Turn off phone functionality during review sessions</string>
