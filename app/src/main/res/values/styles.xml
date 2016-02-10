@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
         <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
+        <item name="android:dialogTheme">@style/StudyDialogStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -31,6 +32,11 @@
 
     <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="StudyDialogStyle" parent="Theme.AppCompat.Light.Dialog" >
+        <item name="colorAccent">@color/accent_material_light_2</item>
+        <item name="android:windowNoTitle">false</item>
     </style>
 
 </resources>

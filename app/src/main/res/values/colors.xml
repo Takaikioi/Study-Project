@@ -18,4 +18,6 @@
     <color name="legacy_primary_dark">#512da8</color>
     <color name="bright_foreground_dark">#ffffff</color>
     <color name="primary_text_dark">#ffffff</color>
+    <color name="accent_material_light_1">#4c407a</color>
+    <color name="accent_material_light_2">#ff4081</color>
 </resources>

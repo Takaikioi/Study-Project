@@ -84,7 +84,7 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
         courseName.setOnEditorActionListener(this);
         courseCode.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        getDialog().setTitle("Please enter your details");
+        getDialog().setTitle("Enter Course Details");
 
         return view;
     }

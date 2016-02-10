@@ -106,8 +106,6 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     dataSource.close();
     }
 
-    //TODO add a proper layout and better display of resources, update fab to add extra options
-
     protected void onResume() {
         super.onResume();
         //dataSource = new CourseDataSource(this);
