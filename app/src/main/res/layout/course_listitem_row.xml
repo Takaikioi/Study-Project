@@ -7,10 +7,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:paddingBottom="5dp"
-        android:layout_marginEnd="10dp"
     />
 
     <TextView
@@ -19,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
         android:gravity="center_horizontal"
+        android:paddingTop="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
     />
@@ -27,7 +25,7 @@
         android:id="@+id/courseNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
+        android:layout_below="@id/courseCodeText"
         android:gravity="center_horizontal"
         android:paddingBottom="10dp"
         android:textSize="15sp"
