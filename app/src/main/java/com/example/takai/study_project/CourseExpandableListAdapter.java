@@ -89,8 +89,8 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public long getGroupId(int groupPosition) {
         return 0;
     }
-    public void addObject(){
-
+    public void addObject(Group group){
+    groups.append(groups.size(),group);
     }
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
