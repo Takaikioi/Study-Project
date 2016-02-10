@@ -22,6 +22,17 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_course_page" />
+
+    <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:fabGravity="bottom_end"
+        app:fabMenu="@menu/course_floating_action_speed_dial"
+        app:miniFabDrawableTint="?attr/colorAccent"
+    />
+
+    <!--
     <android.support.design.widget.FloatingActionButton
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fab"
@@ -31,6 +42,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_more_vert_white_24dp"
     />
+    -->
 
 
 </android.support.design.widget.CoordinatorLayout>
