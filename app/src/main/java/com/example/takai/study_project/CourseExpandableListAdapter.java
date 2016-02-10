@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public Activity context;
-    private SparseArray<Group> groups;
+    public SparseArray<Group> groups;
     public LayoutInflater inflater;
 
 
@@ -89,9 +89,11 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public long getGroupId(int groupPosition) {
         return 0;
     }
-    public void addObject(Group group){
-    groups.append(groups.size(),group);
+
+    public void addObject(int size,Group group){
+    groups.append(size,group);
     }
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
