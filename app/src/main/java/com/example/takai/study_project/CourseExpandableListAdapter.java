@@ -89,7 +89,9 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public long getGroupId(int groupPosition) {
         return 0;
     }
+    public void addObject(){
 
+    }
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {

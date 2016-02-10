@@ -130,10 +130,9 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         dataSource.createData(courseName, courseCode, colour, true, date, date);
         Group group = new Group(courseName);
         group.children.add(courseCode);
-        groups.append(dataSource.getNumberOfElements(),group);
+        groups.append(dataSource.getNumberOfElements(), group);
 
         courseListAdapter.notifyDataSetChanged();
-
         dataSource.close();
     }
 }
