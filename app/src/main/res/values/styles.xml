@@ -35,7 +35,7 @@
     </style>
 
     <style name="StudyDialogStyle" parent="Theme.AppCompat.Light.Dialog" >
-        <item name="colorAccent">@color/accent_material_light_2</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">false</item>
     </style>
 
