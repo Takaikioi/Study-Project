@@ -13,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,7 +37,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
-
+    SparseArray<Group> groups = new SparseArray<Group>();
     //array of strings for the names of the courses.
     ArrayList<String> myNameList=
             new ArrayList<String>();
@@ -48,8 +49,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     List<CourseModel> courseModels =
             new ArrayList<CourseModel>();
     // adapter for displaying the course content in the list
-    CourseListAdapter courseListAdapter;
-    ListView listView;
+    CourseExpandableListAdapter courseListAdapter;
+    ExpandableListView expandableListView;
     // database interface.
     private CourseDataSource dataSource;
 
@@ -79,23 +80,19 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        // add some dates to db(just for manual testing)
-//        Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        String date = dateFormat.format(cal.getTime());
-
-
-       // dataSource.createData("sad", "2304ICT", "RED", true, date, date );
 
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
-            myNameList.add(courseModels.get(i).getName());
-            myCodeList.add(courseModels.get(i).getCode());
-            myColorList.add(courseModels.get(i).getCourseColor());
+            Group group = new Group(courseModels.get(i).getName());
+            group.children.add(courseModels.get(i).getCode());
+            //group.children.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
         }
-         courseListAdapter = new CourseListAdapter(this, myNameList, myCodeList,myColorList);
-        listView = (ListView) findViewById(R.id.listView);
+
+        courseListAdapter = new CourseExpandableListAdapter(this, groups);
+        ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandableListView);
         listView.setAdapter(courseListAdapter);
+
 
     dataSource.close();
     }
@@ -131,24 +128,11 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         String date = dateFormat.format(cal.getTime());
 
         dataSource.createData(courseName, courseCode, colour, true, date, date);
-        courseListAdapter.clear();
-       // courseListAdapter.notifyDataSetChanged();
-        courseModels = dataSource.getAllDataItems();
-        myNameList.clear();
-        myCodeList.clear();
-        myColorList.clear();
-        for(int i = 0; i < courseModels.size(); i++){
-            myNameList.add(courseModels.get(i).getName());
-            myCodeList.add(courseModels.get(i).getCode());
-            myColorList.add(courseModels.get(i).getCourseColor());
-        }
+        Group group = new Group(courseName);
+        group.children.add(courseCode);
+        groups.append(dataSource.getNumberOfElements(),group);
 
-        //courseListAdapter = new CourseListAdapter(this, myNameList, myCodeList,myColorList);
-//        for(int i = 0; i < courseModels.size(); i++){
-//            courseListAdapter.add(courseModels.get(i).getName());
-////            courseListAdapter.add(courseModels.get(i).getCode());
-////            courseListAdapter.add(courseModels.get(i).getCourseColor());
-//        }
+        courseListAdapter.notifyDataSetChanged();
 
         dataSource.close();
     }
