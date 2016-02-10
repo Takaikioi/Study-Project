@@ -21,6 +21,10 @@
         <string name="settings_confirm_button">SAVE CHANGES</string>
         <string name="settings_miscellaneous_colour_dialog_positive_button">Select</string>
         <string name="settings_miscellaneous_colour_dialog_negative_button">Cancel</string>
+        <string name="course_dialog_add_submit">Add Course</string>
+    <string name="course_dialog_add_cancel">Cancel</string>
+        <string name="course_dialog_add_course_code">Course Code</string>
+        <string name="course_dialog_add_course_title">Course Title</string>
 
     <!-- Arrays -->
         <string-array name="settings_type_array">

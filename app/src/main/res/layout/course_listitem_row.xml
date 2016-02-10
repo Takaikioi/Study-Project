@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/courseCodeText"
         android:gravity="center_horizontal"
-        android:paddingBottom="10dp"
+        android:paddingBottom="20dp"
         android:textSize="15sp"
     />
 
