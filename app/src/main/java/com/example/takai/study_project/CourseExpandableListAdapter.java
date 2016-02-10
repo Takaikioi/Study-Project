@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,10 +100,17 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.course_listitem_row, null);
+
         }
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
         Group group = (Group) getGroup(groupPosition);
-        ((CheckedTextView) convertView).setText(group.string);
-        ((CheckedTextView) convertView).setChecked(isExpanded);
+        TextView textView = (TextView) convertView.findViewById(R.id.courseNameText);
+        textView.setText(group.string);
+        imageView.setBackgroundColor(group.colour);
+
+//                ((CheckedTextView) convertView).setText(group.string);
+//        ((CheckedTextView) convertView).setChecked(isExpanded);
+
         return convertView;
     }
 
