@@ -26,9 +26,9 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
     private EditText courseCode;
     private EditText courseActive;
     private Button submitButton;
+    private Button cancelButton;
     private LineColorPicker colorPicker;
-   // private LobsterShadeSlider shadeSlider;
-   // private String colourString;
+
     interface UserNameListener {
         void onFinishUserDialog(String name, String code, int color);
     }
@@ -44,6 +44,7 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
         courseCode = (EditText) view.findViewById(R.id.courseCode);
         courseName = (EditText) view.findViewById(R.id.courseName);
         submitButton = (Button) view.findViewById(R.id.buttonSubmit);
+        cancelButton = (Button) view.findViewById(R.id.buttonCancel);
         colorPicker = (LineColorPicker) view.findViewById(R.id.picker);
         // set color palette
         colorPicker.setColors(new int[] {Color.parseColor("#E91E63"), Color.parseColor("#F44336"), Color.parseColor("#FF5722"),
@@ -63,11 +64,18 @@ public class CourseDialogFragmentAdd extends DialogFragment implements TextView.
 
 // get selected color
         // have the button be a submit button
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UserNameListener activity = (UserNameListener) getActivity();
                 activity.onFinishUserDialog(courseCode.getText().toString(), courseName.getText().toString(), colorPicker.getColor());
+                getDialog().dismiss();
+            }
+        });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 getDialog().dismiss();
             }
         });
