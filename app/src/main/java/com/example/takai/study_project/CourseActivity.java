@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -35,6 +36,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+
+import io.github.yavski.fabspeeddial.FabSpeedDial;
+import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 
 public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
     SparseArray<Group> groups = new SparseArray<Group>();
@@ -63,14 +67,19 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // a button for to do the adding of course content
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //Add listener to FabSpeedDial object.
+        FabSpeedDial fabSpeedDial = (FabSpeedDial) findViewById(R.id.courseFabSpeedDial);
+        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
             @Override
-            public void onClick(View view) {
-                FragmentManager manager = getFragmentManager();
-                CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
-                editNameDialog.show(manager, "fragment");
+            public boolean onMenuItemSelected(MenuItem menuItem) {
+                //Determine source of selection and react.
+                if (menuItem.getItemId() == R.id.action_course_add) {
+                    FragmentManager manager = getFragmentManager();
+                    CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+                    editNameDialog.show(manager, "fragment");
+                    System.out.println("success");
+                }
+                return false;
             }
         });
 

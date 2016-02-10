@@ -24,6 +24,7 @@
     <include layout="@layout/content_course_page" />
 
     <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:id="@+id/courseFabSpeedDial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
