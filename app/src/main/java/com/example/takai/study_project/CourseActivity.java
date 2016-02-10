@@ -83,7 +83,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
 
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
-            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor());
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
             group.children.add(courseModels.get(i).getCode());
             group.colorchildren.add(courseModels.get(i).getCourseColor());
             groups.append(i, group);
@@ -128,7 +128,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         String date = dateFormat.format(cal.getTime());
 
         dataSource.createData(courseName, courseCode, colour, true, date, date);
-        Group group = new Group(courseName, colour);
+        Group group = new Group(courseName, colour, courseCode);
         group.children.add(courseCode);
         group.colorchildren.add(colour);
         courseListAdapter.addObject(groups.size(), group);

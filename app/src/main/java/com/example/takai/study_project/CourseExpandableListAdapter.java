@@ -105,7 +105,9 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
         Group group = (Group) getGroup(groupPosition);
         TextView textView = (TextView) convertView.findViewById(R.id.courseNameText);
+        TextView textView1 = (TextView) convertView.findViewById(R.id.courseCodeText);
         textView.setText(group.string);
+        textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
 
 //                ((CheckedTextView) convertView).setText(group.string);
