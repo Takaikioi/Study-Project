@@ -35,4 +35,5 @@ dependencies {
     compile 'com.rarepebble:colorpicker:1.6.0'
     compile 'com.pes.materialcolorpicker:library:1.0.2'
     compile 'io.github.yavski:fab-speed-dial:1.0.2'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

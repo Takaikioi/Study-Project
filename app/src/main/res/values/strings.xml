@@ -112,7 +112,7 @@
             <string name="summary_account_username">Display name used within the app</string>
             <string name="summary_account_degree">Chosen degree/study path</string>
             <string name="summary_account_major">Major within your course of study</string>
-            <string name="summary_account_institution">Chosen education facility(s)</string>
+            <string name="summary_account_institution">Chosen academic establishment</string>
             <string name="summary_account_autosync">Automatically synchronise local data with the cloud</string>
             <string name="summary_account_donor_status">Donate to gain special perks!</string>
 
