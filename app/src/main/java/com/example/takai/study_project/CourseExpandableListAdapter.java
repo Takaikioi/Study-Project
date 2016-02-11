@@ -134,7 +134,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getTitle() == "Remove"){
+                        if(item.getItemId() == convertView.findViewById(R.id.action_course_remove)){
                             deleteObject(groupPosition);
                         }
                         Toast.makeText(
