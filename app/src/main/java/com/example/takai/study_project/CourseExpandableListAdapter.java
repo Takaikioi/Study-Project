@@ -2,25 +2,34 @@ package com.example.takai.study_project;
 
 import android.app.Activity;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by hephalump on 10/02/2016.
  */
-public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
+public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
     public Activity context;
     public SparseArray<Group> groups;
     public LayoutInflater inflater;
-
+    private CourseDataSource dataSource;
+    private List<CourseModel> courseModels =
+            new ArrayList<CourseModel>();
+    interface DeleteDataItems {
+       boolean deleteObject(int position);
+    }
 
     public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
         inflater = context.getLayoutInflater();
@@ -96,7 +105,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
+    public View getGroupView(final int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.course_listitem_row, null);
@@ -106,6 +115,23 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         Group group = (Group) getGroup(groupPosition);
         TextView textView = (TextView) convertView.findViewById(R.id.courseNameText);
         TextView textView1 = (TextView) convertView.findViewById(R.id.courseCodeText);
+//        if(group.deleteHidden == false){
+//            Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
+//            deleteButton.setVisibility(View.VISIBLE);
+//            deleteButton.setClickable(true);
+//            deleteButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    deleteObject(groupPosition);
+//
+//                }
+//            });
+//        }
+//        if(group.deleteHidden == true){
+//            Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
+//            deleteButton.setVisibility(View.GONE);
+//            deleteButton.setClickable(false);
+//        }
         textView.setText(group.string);
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
@@ -125,4 +151,27 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
     }
+
+    public boolean deleteObject(int position){
+        dataSource = new CourseDataSource(context);
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        courseModels = dataSource.getAllDataItems();
+        dataSource.deleteData(courseModels.get(position));
+        courseModels.remove(position);
+        groups.clear();
+        for(int i = 0; i < courseModels.size(); i++){
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode(),true );
+            group.children.add(courseModels.get(i).getCode());
+            group.colorchildren.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
+        }
+        dataSource.close();
+        notifyDataSetChanged();
+        return true;
+    }
+
 }
