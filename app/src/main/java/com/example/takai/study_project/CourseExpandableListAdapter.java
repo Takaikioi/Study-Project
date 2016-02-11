@@ -26,6 +26,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public Activity context;
     public SparseArray<Group> groups;
     public LayoutInflater inflater;
+    public PopupMenu popupMenu;
 
 
     public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
@@ -116,27 +117,32 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
 
-        ImageView overflowButton = (ImageView) convertView.findViewById(R.id.overflowButton);
-        overflowButton.setOnClickListener(new View.OnClickListener() {
+        final ImageView menuButton = (ImageView) convertView.findViewById(R.id.overflowButton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(final View view) {
-                PopupMenu popupMenu = new PopupMenu(view.getContext(), view) {
-                    public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_course_remove:
-                                //removeCourse(view);
-                                return true;
-                            case R.id.action_course_update:
-                                //updateCourse(view);
-                                return true;
-                            default:
-                                return true;
-                        }
+            public void onClick(final View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(v.getContext(), menuButton);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater()
+                        .inflate(R.menu.course_overflow, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(
+                                v.getContext(),
+                                "You Clicked : " + item.getTitle(),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                        return true;
                     }
-                };
-                popupMenu.inflate(R.menu.course_overflow);
+                });
+
+                popup.show(); //showing popup menu
             }
-        });
+        }); //closing the setOnClickListener method
+//
 
 //        ((CheckedTextView) convertView).setText(group.string);
 //        ((CheckedTextView) convertView).setChecked(isExpanded);
