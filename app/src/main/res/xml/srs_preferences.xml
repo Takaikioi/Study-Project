@@ -5,12 +5,15 @@
     <PreferenceCategory
         android:title="@string/title_srs_preferences">
         <CheckBoxPreference
+            android:key="preferenceSRSFrequency"
             android:title="@string/item_srs_frequency"
             android:summary="@string/summary_srs_frequency"/>
         <CheckBoxPreference
+            android:key="preferenceSRSVacation"
             android:title="@string/item_srs_vacation_mode"
             android:summary="@string/summary_srs_vacation_mode"/>
         <CheckBoxPreference
+            android:key="preferenceSRSReviewTimes"
             android:title="@string/item_srs_review_timing"
             android:summary="@string/summary_srs_review_timing"/>
     </PreferenceCategory>

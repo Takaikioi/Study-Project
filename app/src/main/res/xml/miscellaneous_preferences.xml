@@ -35,12 +35,15 @@
     <PreferenceCategory
         android:title="@string/title_miscellaneous_preferences_other">
         <CheckBoxPreference
+            android:key="preferenceMiscellaneousSilent"
             android:title="@string/item_other_preference_silent_session"
             android:summary="@string/summary_silent_session"/>
         <CheckBoxPreference
+            android:key="preferenceMiscellaneousLocked"
             android:title="@string/item_other_preference_locked_session"
             android:summary="@string/summary_locked_session"/>
         <CheckBoxPreference
+            android:key="preferenceMiscellaneousScreen"
             android:title="@string/item_other_preference_screen_activity"
             android:summary="@string/summary_screen_activity"/>
     </PreferenceCategory>

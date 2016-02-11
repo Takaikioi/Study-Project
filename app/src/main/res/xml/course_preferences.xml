@@ -5,9 +5,11 @@
     <PreferenceCategory
         android:title="@string/title_course_preferences">
         <CheckBoxPreference
+            android:key="preferenceCourseColour"
             android:title="@string/item_course_colour"
             android:summary="@string/summary_course_colour"/>
         <CheckBoxPreference
+            android:key="preferenceCourseDegree"
             android:title="@string/item_account_degree"
             android:summary="@string/summary_account_degree"/>
     </PreferenceCategory>
