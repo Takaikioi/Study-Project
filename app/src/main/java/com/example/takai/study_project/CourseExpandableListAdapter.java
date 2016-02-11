@@ -17,6 +17,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +29,9 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public SparseArray<Group> groups;
     public LayoutInflater inflater;
     public PopupMenu popupMenu;
-
+    private CourseDataSource dataSource;
+    List<CourseModel> courseModels =
+            new ArrayList<CourseModel>();
 
     public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
         inflater = context.getLayoutInflater();
@@ -99,11 +103,11 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public void addObject(int size,Group group){
-    groups.append(size,group);
+    groups.append(size, group);
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
+    public View getGroupView(final int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.course_listitem_row, null);
@@ -130,6 +134,9 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
+                        if(item.getTitle() == "Remove"){
+                            deleteObject(groupPosition);
+                        }
                         Toast.makeText(
                                 v.getContext(),
                                 "You Clicked : " + item.getTitle(),
@@ -158,5 +165,26 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
+    }
+    public boolean deleteObject(int position){
+        dataSource = new CourseDataSource(context);
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        courseModels = dataSource.getAllDataItems();
+        dataSource.deleteData(courseModels.get(position));
+        courseModels.remove(position);
+        groups.clear();
+        for(int i = 0; i < courseModels.size(); i++){
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+            group.children.add(courseModels.get(i).getCode());
+            group.colorchildren.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
+        }
+        dataSource.close();
+        notifyDataSetChanged();
+        return true;
     }
 }
