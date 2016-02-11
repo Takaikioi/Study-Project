@@ -33,13 +33,14 @@ import java.util.List;
 /**
  * Created by hephalump on 10/02/2016
  */
-public class CourseExpandableListAdapter extends  BaseExpandableListAdapter   {
+public class CourseExpandableListAdapter extends  BaseExpandableListAdapter implements CourseActivity.ClickedUpateButton   {
     public Activity context;// the context of the application if came from
     public SparseArray<Group> groups;// the dataset
     public LayoutInflater inflater; // not sure, inflates something
     private CourseDataSource dataSource; // database helper
     List<CourseModel> courseModels = // list of data objects
             new ArrayList<CourseModel>();
+    CourseActivity.ClickedUpateButton callback;
 
     public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
         inflater = context.getLayoutInflater();
@@ -47,6 +48,10 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter   {
         this.context = context;
     }
 
+
+    public void enableUpdateDialogue(CourseModel courseModel){
+        CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+    }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
@@ -144,9 +149,18 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter   {
                         if(item.getItemId() == R.id.action_course_remove){
                             deleteObject(groupPosition);
                         }
-//                        else if(item.getItemId() == R.id.action_course_update){
-//
-//                        }
+                        else if(item.getItemId() == R.id.action_course_update){
+                            dataSource = new CourseDataSource(context);
+                            try {
+                                dataSource.open();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                            courseModels = dataSource.getAllDataItems();
+                            dataSource.close();
+                            callback.enableUpdateDialogue(courseModels.get(groupPosition));
+
+                        }
                         Toast.makeText(
                                 v.getContext(),
                                 "You Clicked : " + item.getTitle(),

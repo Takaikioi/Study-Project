@@ -21,7 +21,8 @@ import uz.shift.colorpicker.OnColorChangedListener;
 /**
  * Created by hephalump on 12/01/2016
  */
-public class CourseDialogFragmentAdd extends DialogFragment implements TextView.OnEditorActionListener {
+public class CourseDialogFragmentAdd extends DialogFragment implements TextView.OnEditorActionListener
+{
     private EditText courseName;
     private EditText courseCode;
     private EditText courseActive;

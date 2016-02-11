@@ -41,7 +41,8 @@ import java.util.TimeZone;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 
-public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener {
+public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener
+{
     SparseArray<Group> groups = new SparseArray<Group>();
     //array of strings for the names of the courses.
     ArrayList<String> myNameList=
@@ -59,7 +60,17 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     // database interface.
     private CourseDataSource dataSource;
 
+    public interface ClickedUpateButton {
+        void enableUpdateDialogue(CourseModel courseModel);
+    }
 
+
+
+    public void enableUpdateDialogue(CourseModel courseModel){
+        FragmentManager manager = getFragmentManager();
+        CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+        editNameDialog.show(manager, "fragment");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,6 +164,29 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         courseListAdapter.addObject(groups.size(), group);
         courseListAdapter.notifyDataSetChanged();
         dataSource.close();
+    }
+
+    public boolean updateObject(int position){
+        dataSource = new CourseDataSource(this);
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        courseModels = dataSource.getAllDataItems();
+        dataSource.updateElement(courseModels.get(position));
+        courseModels = dataSource.getAllDataItems();
+        groups.clear();
+        for(int i = 0; i < courseModels.size(); i++){
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+            group.children.add(courseModels.get(i).getCode());
+            group.colorchildren.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
+        }
+        dataSource.close();
+        courseListAdapter.notifyDataSetChanged();
+
+        return true;
     }
 }
 
