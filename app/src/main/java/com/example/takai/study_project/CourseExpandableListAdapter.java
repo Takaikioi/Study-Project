@@ -150,16 +150,18 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter impl
                             deleteObject(groupPosition);
                         }
                         else if(item.getItemId() == R.id.action_course_update){
-                            dataSource = new CourseDataSource(context);
-                            try {
-                                dataSource.open();
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
-                            courseModels = dataSource.getAllDataItems();
-                            dataSource.close();
-                            callback.enableUpdateDialogue(courseModels.get(groupPosition));
-
+//                            dataSource = new CourseDataSource(context);
+//                            try {
+//                                dataSource.open();
+//                            } catch (SQLException e) {
+//                                e.printStackTrace();
+//                            }
+//                            courseModels = dataSource.getAllDataItems();
+//                            dataSource.close();
+//                            callback.enableUpdateDialogue(courseModels.get(groupPosition));
+                            CourseDialogueFragmentEdit editNameDialog = new CourseDialogueFragmentEdit();
+                            FragmentManager manager = context.getFragmentManager();
+                            editNameDialog.show(manager, "fragment");
                         }
                         Toast.makeText(
                                 v.getContext(),

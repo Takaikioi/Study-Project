@@ -1,6 +1,7 @@
 package com.example.takai.study_project;
 
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -16,9 +17,9 @@ import uz.shift.colorpicker.LineColorPicker;
 import uz.shift.colorpicker.OnColorChangedListener;
 
 /**
- * Created by hephalump on 11/02/2016.
+ * Created by hephalump on 11/02/2016
  */
-public class CourseDialogueFragmentEdit extends DialogFragment implements TextView.OnEditorActionListener {
+public class CourseDialogueFragmentEdit extends DialogFragment implements TextView.OnEditorActionListener{
     private EditText courseName;
     private EditText courseCode;
     private EditText courseActive;
