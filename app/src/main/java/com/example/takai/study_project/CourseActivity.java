@@ -98,7 +98,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        // adding all the data items to a dataset so that the list can have values
         courseModels = dataSource.getAllDataItems();
         for(int i = 0; i < courseModels.size(); i++){
             Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
@@ -106,7 +106,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
             group.colorchildren.add(courseModels.get(i).getCourseColor());
             groups.append(i, group);
         }
-
+        // creating the expandable list and adding it to the screen
         courseListAdapter = new CourseExpandableListAdapter(this, groups);
         ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandableListView);
         listView.setAdapter(courseListAdapter);
@@ -131,6 +131,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         dataSource.close();
     }
 
+    // transfer data from the add dialogue to the database.
+
     @Override
     public void onFinishUserDialog(String courseName, String courseCode, int colour) {
         try {
@@ -139,6 +141,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
             e.printStackTrace();
         }
 
+        // create a rudimentary date.
         Calendar  cal =  Calendar.getInstance(); // calendar instance so can get a current date
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFormat.format(cal.getTime());

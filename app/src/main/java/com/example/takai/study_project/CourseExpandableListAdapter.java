@@ -1,7 +1,12 @@
 package com.example.takai.study_project;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.media.Image;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -19,19 +24,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * Created by hephalump on 10/02/2016
  */
-public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
-    public Activity context;
-    public SparseArray<Group> groups;
-    public LayoutInflater inflater;
-    public PopupMenu popupMenu;
-    private CourseDataSource dataSource;
-    List<CourseModel> courseModels =
+public class CourseExpandableListAdapter extends  BaseExpandableListAdapter   {
+    public Activity context;// the context of the application if came from
+    public SparseArray<Group> groups;// the dataset
+    public LayoutInflater inflater; // not sure, inflates something
+    private CourseDataSource dataSource; // database helper
+    List<CourseModel> courseModels = // list of data objects
             new ArrayList<CourseModel>();
 
     public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
@@ -53,7 +60,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         return 0;
     }
 
-    @Override
+    @Override // handles the expanded lists
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final String children = (String) getChild(groupPosition, childPosition);
@@ -107,21 +114,21 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     groups.append(size, group);
     }
 
-    @Override
+    @Override // handles the main list objects
     public View getGroupView(final int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.course_listitem_row, null);
-
         }
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-        Group group = (Group) getGroup(groupPosition);
-        TextView textView = (TextView) convertView.findViewById(R.id.courseNameText);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView); // an image
+        Group group = (Group) getGroup(groupPosition); // a data object
+        TextView textView = (TextView) convertView.findViewById(R.id.courseNameText); // a textview to hold text
         TextView textView1 = (TextView) convertView.findViewById(R.id.courseCodeText);
-        textView.setText(group.string);
+        textView.setText(group.string); // adding the stupid course name to the textfield
         textView1.setText(group.code);
-        imageView.setBackgroundColor(group.colour);
+        imageView.setBackgroundColor(group.colour); // set the color of the background
         final FrameLayout menuButton = (FrameLayout) convertView.findViewById(R.id.overflowButtonBounds);
+        // add a menu button
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -136,6 +143,9 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getItemId() == R.id.action_course_remove){
                             deleteObject(groupPosition);
+                        }
+                        else if(item.getItemId() == R.id.action_course_update){
+
                         }
                         Toast.makeText(
                                 v.getContext(),
@@ -166,7 +176,31 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
     }
+
+    // method for deleting the objects and making the screen update afterwards
     public boolean deleteObject(int position){
+        dataSource = new CourseDataSource(context); // a database helper
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        courseModels = dataSource.getAllDataItems(); // add all the data items to a list
+        dataSource.deleteData(courseModels.get(position)); // select the object from the list to delete
+        courseModels.remove(position); // take the object out as the list hasn't been updated
+        groups.clear(); // renew the dataset
+        for(int i = 0; i < courseModels.size(); i++){
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+            group.children.add(courseModels.get(i).getCode());
+            group.colorchildren.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
+        }
+        dataSource.close();
+        notifyDataSetChanged(); // inform the view the dataset has changed
+        return true;
+    }
+    // a method for updating the objects in the view and the database.
+    public boolean updateObject(int position){
         dataSource = new CourseDataSource(context);
         try {
             dataSource.open();
@@ -174,8 +208,8 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
             e.printStackTrace();
         }
         courseModels = dataSource.getAllDataItems();
-        dataSource.deleteData(courseModels.get(position));
-        courseModels.remove(position);
+        dataSource.updateElement(courseModels.get(position));
+        courseModels = dataSource.getAllDataItems();
         groups.clear();
         for(int i = 0; i < courseModels.size(); i++){
             Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
@@ -185,6 +219,10 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         }
         dataSource.close();
         notifyDataSetChanged();
+
         return true;
     }
+
+
+
 }

@@ -42,6 +42,7 @@ public class CourseDataSource {
         values.put(CourseDBhelper.COURSE_ACTIVE_COLUMN, active);
         values.put(CourseDBhelper.COURSE_START_DATE_COLUMN, startDate);
         values.put(CourseDBhelper.COURSE_END_DATE_COLUMN, endDate);
+
         long insertId = database.insert(CourseDBhelper.COURSE_TABLE_NAME, null,
                 values);
         Cursor cursor = database.query(CourseDBhelper.COURSE_TABLE_NAME,
@@ -102,5 +103,18 @@ public class CourseDataSource {
                 allColumns, null, null, null, null, null);
         int numRows = cursor.getColumnCount();
         return numRows;
+    }
+    public boolean updateElement(CourseModel courseModel){
+        ContentValues values = new ContentValues();
+        values.put(CourseDBhelper.COURSE_NAME_COLUMN, courseModel.getName());
+        values.put(CourseDBhelper.COURSE_CODE_COLUMN, courseModel.getCode());
+        values.put(CourseDBhelper.COURSE_COLOUR_COLUMN, courseModel.getCourseColor());
+        values.put(CourseDBhelper.COURSE_ACTIVE_COLUMN, courseModel.isActive());
+        values.put(CourseDBhelper.COURSE_START_DATE_COLUMN, courseModel.getStartDate());
+        values.put(CourseDBhelper.COURSE_END_DATE_COLUMN, courseModel.getEndDate());
+
+        database.update(CourseDBhelper.COURSE_TABLE_NAME,values,CourseDBhelper.COLUMN_ID
+                + " = " + courseModel.getId(), null);
+        return true;
     }
 }

@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// a dataset object for use in the course page
 public class Group {
     public  String string;
     public int colour;
