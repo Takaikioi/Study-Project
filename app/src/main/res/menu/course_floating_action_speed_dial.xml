@@ -2,6 +2,7 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
     <item
         android:id="@+id/action_course_add"
         android:icon="@drawable/ic_add_white_24dp"
@@ -17,4 +18,5 @@
         android:icon="@drawable/ic_cached_white_24dp"
         android:title=""
     />
+    -->
 </menu>

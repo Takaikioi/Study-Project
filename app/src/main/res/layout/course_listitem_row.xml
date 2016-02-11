@@ -10,6 +10,17 @@
         android:paddingBottom="5dp"
     />
 
+    <Button
+        android:id="@+id/courseOverflowIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/ic_more_vert_black_24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/imageView"
+        />
+
     <TextView
         android:id="@+id/courseCodeText"
         android:layout_width="match_parent"

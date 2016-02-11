@@ -67,21 +67,29 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Add listener to FabSpeedDial object.
-        FabSpeedDial fabSpeedDial = (FabSpeedDial) findViewById(R.id.courseFabSpeedDial);
-        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
-            @Override
-            public boolean onMenuItemSelected(MenuItem menuItem) {
-                //Determine source of selection and react.
-                if (menuItem.getItemId() == R.id.action_course_add) {
-                    FragmentManager manager = getFragmentManager();
-                    CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
-                    editNameDialog.show(manager, "fragment");
-                    System.out.println("success");
-                }
-                return false;
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+                editNameDialog.show(manager, "fragment");
             }
         });
+
+        //Add listener to FabSpeedDial object.
+//        FabSpeedDial fabSpeedDial = (FabSpeedDial) findViewById(R.id.courseFabSpeedDial);
+//        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
+//            @Override
+//            public boolean onMenuItemSelected(MenuItem menuItem) {
+//                //Determine source of selection and react.
+//                if (menuItem.getItemId() == R.id.action_course_add) {
+//                    FragmentManager manager = getFragmentManager();
+//                    CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+//                    editNameDialog.show(manager, "fragment");
+//                }
+//                return false;
+//            }
+//        });
 
         dataSource = new CourseDataSource(this);
         try {
@@ -141,6 +149,10 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         courseListAdapter.addObject(groups.size(), group);
         courseListAdapter.notifyDataSetChanged();
         dataSource.close();
+    }
+
+    public void onOverflowClicked(){
+
     }
 }
 

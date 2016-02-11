@@ -78,6 +78,7 @@
             android:layout_height="36dp"
             android:text="@string/course_dialog_add_cancel"
             android:textSize="14sp"
+            android:gravity="center"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
         />
 
@@ -87,6 +88,7 @@
             android:layout_height="36dp"
             android:text="@string/course_dialog_add_submit"
             android:textSize="14sp"
+            android:gravity="center"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
          />
     </LinearLayout>
