@@ -115,23 +115,23 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
         Group group = (Group) getGroup(groupPosition);
         TextView textView = (TextView) convertView.findViewById(R.id.courseNameText);
         TextView textView1 = (TextView) convertView.findViewById(R.id.courseCodeText);
-//        if(group.deleteHidden == false){
-//            Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
-//            deleteButton.setVisibility(View.VISIBLE);
-//            deleteButton.setClickable(true);
-//            deleteButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    deleteObject(groupPosition);
-//
-//                }
-//            });
-//        }
-//        if(group.deleteHidden == true){
-//            Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
-//            deleteButton.setVisibility(View.GONE);
-//            deleteButton.setClickable(false);
-//        }
+        if(group.deleteHidden == false){
+            Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
+            deleteButton.setVisibility(View.VISIBLE);
+            deleteButton.setClickable(true);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteObject(groupPosition);
+
+                }
+            });
+        }
+        if(group.deleteHidden == true){
+            Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
+            deleteButton.setVisibility(View.GONE);
+            deleteButton.setClickable(false);
+        }
         textView.setText(group.string);
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
