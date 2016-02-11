@@ -59,6 +59,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     private CourseDataSource dataSource;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
