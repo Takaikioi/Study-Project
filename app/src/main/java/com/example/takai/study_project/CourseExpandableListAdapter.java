@@ -144,9 +144,9 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter   {
                         if(item.getItemId() == R.id.action_course_remove){
                             deleteObject(groupPosition);
                         }
-                        else if(item.getItemId() == R.id.action_course_update){
-
-                        }
+//                        else if(item.getItemId() == R.id.action_course_update){
+//
+//                        }
                         Toast.makeText(
                                 v.getContext(),
                                 "You Clicked : " + item.getTitle(),
