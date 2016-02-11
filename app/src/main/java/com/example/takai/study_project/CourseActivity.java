@@ -78,6 +78,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
                     CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
                     editNameDialog.show(manager, "fragment");
                     System.out.println("success");
+                }else if(menuItem.getItemId() == R.id.action_course_remove){
+                    enableDelete();
                 }
                 return false;
             }
@@ -141,6 +143,12 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         courseListAdapter.addObject(groups.size(), group);
         courseListAdapter.notifyDataSetChanged();
         dataSource.close();
+    }
+    public void enableDelete(){
+        for(int i = 0; i < groups.size(); i++){
+            groups.get(i).deleteHidden = false;
+        }
+        courseListAdapter.notifyDataSetChanged();
     }
 }
 

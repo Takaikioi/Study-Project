@@ -21,13 +21,13 @@ import java.util.List;
  * Created by hephalump on 10/02/2016.
  */
 public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
-    public Activity context;
-    public SparseArray<Group> groups;
+    public Activity context; // the activity
+    public SparseArray<Group> groups; // the dataset
     public LayoutInflater inflater;
     private CourseDataSource dataSource;
     private List<CourseModel> courseModels =
             new ArrayList<CourseModel>();
-    interface DeleteDataItems {
+    interface DeleteDataItems { // delegate interface currently unused.
        boolean deleteObject(int position);
     }
 
@@ -103,7 +103,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
     public void addObject(int size,Group group){
     groups.append(size,group);
     }
-
+    // adds items to the screen, items have children on click.
     @Override
     public View getGroupView(final int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
@@ -115,10 +115,12 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
         Group group = (Group) getGroup(groupPosition);
         TextView textView = (TextView) convertView.findViewById(R.id.courseNameText);
         TextView textView1 = (TextView) convertView.findViewById(R.id.courseCodeText);
+        // set the visibility of a delete button based on if the object's status as hidden is set or not
         if(group.deleteHidden == false){
             Button deleteButton = (Button) convertView.findViewById(R.id.courseDeleteButton);
             deleteButton.setVisibility(View.VISIBLE);
             deleteButton.setClickable(true);
+            // click listener that just deletes the selected item
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -136,8 +138,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
 
-//                ((CheckedTextView) convertView).setText(group.string);
-//        ((CheckedTextView) convertView).setChecked(isExpanded);
+
 
         return convertView;
     }
@@ -152,25 +153,27 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter  {
         return false;
     }
 
+
+    // deletes an item from the database and then reloads the data in the set.
     public boolean deleteObject(int position){
-        dataSource = new CourseDataSource(context);
+        dataSource = new CourseDataSource(context); // the database adapter
         try {
             dataSource.open();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        courseModels = dataSource.getAllDataItems();
-        dataSource.deleteData(courseModels.get(position));
-        courseModels.remove(position);
-        groups.clear();
-        for(int i = 0; i < courseModels.size(); i++){
+        courseModels = dataSource.getAllDataItems(); // puts the course objects into a list
+        dataSource.deleteData(courseModels.get(position)); // deletes the model from the database
+        courseModels.remove(position); // removes the item from the list
+        groups.clear(); // clears the screen dataset
+        for(int i = 0; i < courseModels.size(); i++){ // updates the screen dataset
             Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode(),true );
             group.children.add(courseModels.get(i).getCode());
             group.colorchildren.add(courseModels.get(i).getCourseColor());
             groups.append(i, group);
         }
-        dataSource.close();
-        notifyDataSetChanged();
+        dataSource.close(); // close database
+        notifyDataSetChanged(); // notify screen to reload elements
         return true;
     }
 
