@@ -5,24 +5,30 @@
     <PreferenceCategory
         android:title="@string/title_account_preferences_user">
         <EditTextPreference
+            android:key="preferenceAccountUsername"
             android:title="@string/item_account_username"
-            android:summary="@string/summary_account_username"/>
+            android:summary="@string/summary_account_username" />
         <EditTextPreference
+            android:key="preferenceAccountDegree"
             android:title="@string/item_account_degree"
-            android:summary="@string/summary_account_username"/>
+            android:summary="@string/summary_account_degree"/>
         <EditTextPreference
+            android:key="preferenceAccountMajor"
             android:title="@string/item_account_major"
-            android:summary="@string/summary_account_username"/>
+            android:summary="@string/summary_account_major"/>
         <EditTextPreference
+            android:key="preferenceAccountInstitution"
             android:title="@string/item_account_institution"
-            android:summary="@string/summary_account_username"/>
+            android:summary="@string/summary_account_institution"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/title_account_preferences_other">
         <CheckBoxPreference
+            android:key="preferenceAccountAutosync"
             android:title="@string/item_account_autosync"
             android:summary="@string/summary_account_autosync"/>
         <Preference
+            android:key="preferenceAccountDonorStatus"
             android:title="@string/item_account_donor_status"
             android:summary="@string/summary_account_donor_status"/>
     </PreferenceCategory>

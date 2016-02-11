@@ -163,7 +163,7 @@
             <string name="item_notifications_review">Review Notifications</string>
             <string name="item_notifications_personal">Personal Notifications</string>
             <string name="item_notifications_lockscreen">Lock-screen Notifications</string>
-            <string name="item_notifications_statusbar">Toolbar Notifications</string>
+            <string name="item_notifications_statusbar">Status Bar Notifications</string>
             <string name="item_notifications_threshold">Notification Threshold</string>
             <string name="item_notifications_scope">Notification Scope</string>
 

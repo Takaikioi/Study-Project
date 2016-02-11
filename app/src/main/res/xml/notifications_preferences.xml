@@ -5,30 +5,39 @@
     <PreferenceCategory
         android:title="@string/title_notifications_preferences">
         <CheckBoxPreference
+            android:key="preferenceNotificationsGlobal"
             android:title="@string/item_notifications_global_allow"
             android:summary="@string/summary_notifications_global_allow"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsClass"
             android:title="@string/item_notifications_class"
             android:summary="@string/summary_notifications_class"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsAssessment"
             android:title="@string/item_notifications_assessment"
             android:summary="@string/summary_notifications_assessment"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsReview"
             android:title="@string/item_notifications_review"
             android:summary="@string/summary_notifications_review"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsPersonal"
             android:title="@string/item_notifications_personal"
             android:summary="@string/summary_notifications_personal"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsLockscreen"
             android:title="@string/item_notifications_lockscreen"
             android:summary="@string/summary_notifications_lockscreen"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsStatusBar"
             android:title="@string/item_notifications_statusbar"
             android:summary="@string/summary_notifications_statusbar"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsThreshold"
             android:title="@string/item_notifications_threshold"
             android:summary="@string/summary_notifications_threshold"/>
         <CheckBoxPreference
+            android:key="preferenceNotificationsScope"
             android:title="@string/item_notifications_scope"
             android:summary="@string/summary_notifications_scope"/>
     </PreferenceCategory>
