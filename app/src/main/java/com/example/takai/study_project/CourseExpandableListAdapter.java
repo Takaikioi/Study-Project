@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -120,7 +121,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         textView.setText(group.string);
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
-        final ImageView menuButton = (ImageView) convertView.findViewById(R.id.overflowButton);
+        final FrameLayout menuButton = (FrameLayout) convertView.findViewById(R.id.overflowButtonBounds);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

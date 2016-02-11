@@ -9,20 +9,28 @@
         android:layout_height="10dp"
         android:paddingBottom="5dp"
     />
+
     <FrameLayout
+        android:id="@+id/overflowButtonBounds"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_below="@id/imageView"
-        android:padding="16dp">
+        android:paddingTop="23dp"
+        android:paddingBottom="22dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
         <ImageView
             android:id="@+id/overflowButton"
             android:layout_width="25dp"
-            android:layout_height="match_parent"
+            android:layout_height="25dp"
             android:src="@drawable/ic_more_vert_black_24dp"
             android:scaleType="centerInside"
         />
+
     </FrameLayout>
+
     <TextView
         android:id="@+id/courseCodeText"
         android:layout_width="match_parent"
@@ -43,6 +51,5 @@
         android:paddingBottom="20dp"
         android:textSize="15sp"
     />
-
 
 </RelativeLayout>
