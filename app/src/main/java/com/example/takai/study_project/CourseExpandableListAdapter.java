@@ -1,20 +1,26 @@
 package com.example.takai.study_project;
 
 import android.app.Activity;
+import android.media.Image;
+import android.support.v7.view.menu.MenuBuilder;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 /**
- * Created by hephalump on 10/02/2016.
+ * Created by hephalump on 10/02/2016
  */
 public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
     public Activity context;
@@ -110,7 +116,29 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
 
-//                ((CheckedTextView) convertView).setText(group.string);
+        ImageView overflowButton = (ImageView) convertView.findViewById(R.id.overflowButton);
+        overflowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                PopupMenu popupMenu = new PopupMenu(view.getContext(), view) {
+                    public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_course_remove:
+                                //removeCourse(view);
+                                return true;
+                            case R.id.action_course_update:
+                                //updateCourse(view);
+                                return true;
+                            default:
+                                return true;
+                        }
+                    }
+                };
+                popupMenu.inflate(R.menu.course_overflow);
+            }
+        });
+
+//        ((CheckedTextView) convertView).setText(group.string);
 //        ((CheckedTextView) convertView).setChecked(isExpanded);
 
         return convertView;

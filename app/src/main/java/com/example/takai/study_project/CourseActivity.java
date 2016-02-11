@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -149,10 +150,6 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         courseListAdapter.addObject(groups.size(), group);
         courseListAdapter.notifyDataSetChanged();
         dataSource.close();
-    }
-
-    public void onOverflowClicked(){
-
     }
 }
 
