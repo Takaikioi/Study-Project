@@ -120,7 +120,6 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
         textView.setText(group.string);
         textView1.setText(group.code);
         imageView.setBackgroundColor(group.colour);
-
         final ImageView menuButton = (ImageView) convertView.findViewById(R.id.overflowButton);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +133,7 @@ public class CourseExpandableListAdapter extends BaseExpandableListAdapter {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getItemId() == convertView.findViewById(R.id.action_course_remove)){
+                        if(item.getItemId() == R.id.action_course_remove){
                             deleteObject(groupPosition);
                         }
                         Toast.makeText(
