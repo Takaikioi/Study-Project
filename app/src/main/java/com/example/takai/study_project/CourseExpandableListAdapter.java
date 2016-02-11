@@ -239,6 +239,4 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter impl
         return true;
     }
 
-
-
 }
