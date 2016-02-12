@@ -238,5 +238,6 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         courseListAdapter.notifyDataSetChanged(); // inform the view the dataset has changed
         return true;
     }
+
 }
 
