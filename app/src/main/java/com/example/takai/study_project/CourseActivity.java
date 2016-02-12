@@ -41,7 +41,7 @@ import java.util.TimeZone;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 
-public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener
+public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener, CourseDialogueFragmentEdit.UpdateDetails
 {
     SparseArray<Group> groups = new SparseArray<Group>();
     //array of strings for the names of the courses.
@@ -67,9 +67,10 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
 
 
     public void enableUpdateDialogue(CourseModel courseModel){
-        FragmentManager manager = getFragmentManager();
-        CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
-        editNameDialog.show(manager, "fragment");
+
+//        FragmentManager manager = getFragmentManager();
+//        CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
+//        editNameDialog.show(manager, "fragment");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +135,22 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        courseModels = dataSource.getAllDataItems();
+        groups.clear();
+        for(int i = 0; i < courseModels.size(); i++){
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+            group.children.add(courseModels.get(i).getCode());
+            group.colorchildren.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
+        }
+        dataSource.close();
+        courseListAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -143,7 +160,10 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     }
 
     // transfer data from the add dialogue to the database.
-
+    @Override
+    public void onFinishUserDialog(String name, String code, int color, int position){
+        updateObject(name,code,color,position);
+    }
     @Override
     public void onFinishUserDialog(String courseName, String courseCode, int colour) {
         try {
@@ -166,7 +186,7 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         dataSource.close();
     }
 
-    public boolean updateObject(int position){
+    public boolean updateObject(String name, String code, int color,int position){
         dataSource = new CourseDataSource(this);
         try {
             dataSource.open();
@@ -174,6 +194,9 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
             e.printStackTrace();
         }
         courseModels = dataSource.getAllDataItems();
+        courseModels.get(position).setName(name);
+        courseModels.get(position).setCode(code);
+        courseModels.get(position).setCourseColor(color);
         dataSource.updateElement(courseModels.get(position));
         courseModels = dataSource.getAllDataItems();
         groups.clear();

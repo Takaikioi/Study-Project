@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.media.Image;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.util.SparseArray;
@@ -33,14 +34,13 @@ import java.util.List;
 /**
  * Created by hephalump on 10/02/2016
  */
-public class CourseExpandableListAdapter extends  BaseExpandableListAdapter implements CourseActivity.ClickedUpateButton   {
+public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
     public Activity context;// the context of the application if came from
     public SparseArray<Group> groups;// the dataset
     public LayoutInflater inflater; // not sure, inflates something
     private CourseDataSource dataSource; // database helper
     List<CourseModel> courseModels = // list of data objects
             new ArrayList<CourseModel>();
-    CourseActivity.ClickedUpateButton callback;
 
     public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
         inflater = context.getLayoutInflater();
@@ -150,18 +150,27 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter impl
                             deleteObject(groupPosition);
                         }
                         else if(item.getItemId() == R.id.action_course_update){
-//                            dataSource = new CourseDataSource(context);
-//                            try {
-//                                dataSource.open();
-//                            } catch (SQLException e) {
-//                                e.printStackTrace();
-//                            }
-//                            courseModels = dataSource.getAllDataItems();
-//                            dataSource.close();
-//                            callback.enableUpdateDialogue(courseModels.get(groupPosition));
                             CourseDialogueFragmentEdit editNameDialog = new CourseDialogueFragmentEdit();
+                            Bundle args = new Bundle();
+                            if(courseModels.size() < groups.size()){
+                                dataSource = new CourseDataSource(context);
+                                try {
+                                    dataSource.open();
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                                // adding all the data items to a dataset so that the list can have values
+                                courseModels = dataSource.getAllDataItems();
+                                dataSource.close();
+                            }
+                            args.putString("name",courseModels.get(groupPosition).getName());
+                            args.putString("code",courseModels.get(groupPosition).getCode());
+                            args.putInt("color", courseModels.get(groupPosition).getCourseColor());
+                            args.putInt("position", groupPosition);
+                            editNameDialog.setArguments(args);
                             FragmentManager manager = context.getFragmentManager();
                             editNameDialog.show(manager, "fragment");
+
                         }
                         Toast.makeText(
                                 v.getContext(),
@@ -216,7 +225,9 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter impl
         return true;
     }
     // a method for updating the objects in the view and the database.
-    public boolean updateObject(int position){
+    public boolean updateObject(String name, String code, int color,int position){
+        // update the
+
         dataSource = new CourseDataSource(context);
         try {
             dataSource.open();
@@ -224,6 +235,9 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter impl
             e.printStackTrace();
         }
         courseModels = dataSource.getAllDataItems();
+        courseModels.get(position).setName(name);
+        courseModels.get(position).setCode(code);
+        courseModels.get(position).setCourseColor(color);
         dataSource.updateElement(courseModels.get(position));
         courseModels = dataSource.getAllDataItems();
         groups.clear();
@@ -238,5 +252,6 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter impl
 
         return true;
     }
+
 
 }

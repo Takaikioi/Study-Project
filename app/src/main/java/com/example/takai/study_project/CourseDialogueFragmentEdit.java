@@ -1,8 +1,11 @@
 package com.example.takai.study_project;
 
+import android.annotation.TargetApi;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -13,26 +16,38 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import uz.shift.colorpicker.LineColorPicker;
 import uz.shift.colorpicker.OnColorChangedListener;
 
 /**
  * Created by hephalump on 11/02/2016
  */
-public class CourseDialogueFragmentEdit extends DialogFragment implements TextView.OnEditorActionListener{
+public class CourseDialogueFragmentEdit extends DialogFragment{
     private EditText courseName;
     private EditText courseCode;
     private EditText courseActive;
     private Button submitButton;
     private Button cancelButton;
     private LineColorPicker colorPicker;
+    private Bundle arguments;
+    private CourseDataSource dataSource; // database helper
+    List<CourseModel> courseModels = // list of data objects
+            new ArrayList<CourseModel>();
 
-    interface UserNameListener {
-        void onFinishUserDialog(String name, String code, int color);
-    }
 
     public CourseDialogueFragmentEdit(){
 
+    }
+
+    interface UpdateDetails {
+        void onFinishUserDialog(String name, String code, int color, int position);
+    }
+    interface UpdateCourseDetails {
+        void onFinishUserDialog(String name, String code, int color, int position);
     }
 
     @Override
@@ -43,18 +58,23 @@ public class CourseDialogueFragmentEdit extends DialogFragment implements TextVi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
+        arguments = getArguments();
         View view = inflater.inflate(R.layout.course_add_dialog_layout, container);
         courseCode = (EditText) view.findViewById(R.id.courseCode);
+        courseCode.setText(arguments.getString("code"));
         courseName = (EditText) view.findViewById(R.id.courseName);
+        courseName.setText(arguments.getString("name"));
         submitButton = (Button) view.findViewById(R.id.buttonSubmit);
+        submitButton.setText("SAVE");
         cancelButton = (Button) view.findViewById(R.id.buttonCancel);
+        cancelButton.setText("CANCEL");
         colorPicker = (LineColorPicker) view.findViewById(R.id.picker);
         // set color palette
         colorPicker.setColors(new int[] {Color.parseColor("#E91E63"), Color.parseColor("#F44336"), Color.parseColor("#FF5722"),
                 Color.parseColor("#FF9800"), Color.parseColor("#FFC107"), Color.parseColor("#8BC34A"), Color.parseColor("#4CAF50"),
                 Color.parseColor("#009688"), Color.parseColor("#00BCD4"), Color.parseColor("#03A9F4"), Color.parseColor("#2196F3"),
                 Color.parseColor("#3F51B5"), Color.parseColor("#673AB7"), Color.parseColor("#9C27B0")});
-        colorPicker.setSelectedColor(Color.parseColor("#F44336"));
+        colorPicker.setSelectedColor(getArguments().getInt("color"));
 
 // set on change listener
         colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
@@ -71,8 +91,9 @@ public class CourseDialogueFragmentEdit extends DialogFragment implements TextVi
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserNameListener activity = (UserNameListener) getActivity();
-                activity.onFinishUserDialog(courseCode.getText().toString(), courseName.getText().toString(), colorPicker.getColor());
+                UpdateDetails activity = (UpdateDetails) getActivity();
+                activity.onFinishUserDialog(courseCode.getText().toString(), courseName.getText().toString(), colorPicker.getColor(), arguments.getInt("position"));
+               // updateElement(courseName.getText().toString(), courseCode.getText().toString(), colorPicker.getColor(), arguments.getInt("position"));
                 getDialog().dismiss();
             }
         });
@@ -83,8 +104,7 @@ public class CourseDialogueFragmentEdit extends DialogFragment implements TextVi
             }
         });
         // set this instance as callback for editor action
-        courseCode.setOnEditorActionListener(this);
-        courseName.setOnEditorActionListener(this);
+
         courseCode.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().setTitle("Enter Course Details");
@@ -92,16 +112,7 @@ public class CourseDialogueFragmentEdit extends DialogFragment implements TextVi
         return view;
     }
 
+
     //TODO port to the fragment manager
 
-
-
-    @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event){
-        // return input text to activity
-        UserNameListener activity = (UserNameListener) getActivity();
-        activity.onFinishUserDialog(courseCode.getText().toString(), courseName.getText().toString(), colorPicker.getColor() );
-        this.dismiss();
-        return true;
-    }
 }
