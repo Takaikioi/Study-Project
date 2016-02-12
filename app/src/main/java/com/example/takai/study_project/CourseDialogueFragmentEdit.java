@@ -46,9 +46,6 @@ public class CourseDialogueFragmentEdit extends DialogFragment{
     interface UpdateDetails {
         void onFinishUserDialog(String name, String code, int color, int position);
     }
-    interface UpdateCourseDetails {
-        void onFinishUserDialog(String name, String code, int color, int position);
-    }
 
     @Override
     public void setArguments(Bundle args) {
