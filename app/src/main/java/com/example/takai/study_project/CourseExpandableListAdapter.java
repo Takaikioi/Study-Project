@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -78,6 +79,8 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, ModuleActivity.class);
+                context.startActivity(intent);
                 Toast.makeText(context, children,
                         Toast.LENGTH_SHORT).show();
             }
@@ -139,10 +142,10 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
             public void onClick(final View v) {
                 //Creating the instance of PopupMenu
                 PopupMenu popup = new PopupMenu(v.getContext(), menuButton);
+
                 //Inflating the Popup using xml file
                 popup.getMenuInflater()
                         .inflate(R.menu.course_overflow, popup.getMenu());
-
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
@@ -257,6 +260,5 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
 //
 //        return true;
 //    }
-
 
 }

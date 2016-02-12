@@ -20,7 +20,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="PurpleDreams" parent="AppTheme" >
+    <style name="PurpleDreams" parent="AppTheme">
         <item name="android:colorBackground">@color/background_material_light</item>
         <item name="android:colorForeground">@color/bright_foreground_dark</item>
         <item name="android:textColorPrimary">@color/primary_text_dark</item>
@@ -34,7 +34,7 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="StudyDialogStyle" parent="Theme.AppCompat.Light.Dialog" >
+    <style name="StudyDialogStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">false</item>
     </style>
