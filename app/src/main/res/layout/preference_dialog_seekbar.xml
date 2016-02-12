@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SeekBar
+        android:id="@+id/seekBarPreferences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+    />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBarPreferences"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="@string/course_dialog_add_cancel"
+            android:textSize="14sp"
+            android:gravity="center"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        />
+
+        <Button
+            android:id="@+id/buttonConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="@string/preference_dialog_confirm"
+            android:textSize="14sp"
+            android:gravity="center"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        />
+    </LinearLayout>
+
+</RelativeLayout>

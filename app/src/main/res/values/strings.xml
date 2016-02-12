@@ -27,6 +27,7 @@
         <string name="course_dialog_add_course_title">Course Title</string>
         <string name="course_update">Update</string>
         <string name="course_remove">Remove</string>
+        <string name="preference_dialog_confirm">Confirm</string>
 
     <!-- Arrays -->
         <string-array name="settings_type_array">

@@ -71,20 +71,18 @@ public class CourseDialogueFragmentEdit extends DialogFragment{
                 Color.parseColor("#FF9800"), Color.parseColor("#FFC107"), Color.parseColor("#8BC34A"), Color.parseColor("#4CAF50"),
                 Color.parseColor("#009688"), Color.parseColor("#00BCD4"), Color.parseColor("#03A9F4"), Color.parseColor("#2196F3"),
                 Color.parseColor("#3F51B5"), Color.parseColor("#673AB7"), Color.parseColor("#9C27B0")});
-        colorPicker.setSelectedColor(getArguments().getInt("color"));
+        colorPicker.setSelectedColor(arguments.getInt("color"));
 
-// set on change listener
+        // set on change listener
         colorPicker.setOnColorChangedListener(new OnColorChangedListener() {
             @Override
             public void onColorChanged(int c) {
                 //Log.d(this, "Selected color " + Integer.toHexString(c));
-
             }
         });
 
-// get selected color
+        // get selected color
         // have the button be a submit button
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +99,6 @@ public class CourseDialogueFragmentEdit extends DialogFragment{
             }
         });
         // set this instance as callback for editor action
-
         courseCode.requestFocus();
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().setTitle("Enter Course Details");

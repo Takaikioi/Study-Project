@@ -108,19 +108,17 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
     private void updatePreference(Preference preference, String key) {
         if (preference == null) {
 
-        } else if (preference instanceof ColorPreference) {
-
-        } else if (preference instanceof CheckBoxPreference) {
-
         } else if (preference instanceof ListPreference) {
             ListPreference listPreference = (ListPreference) preference;
             listPreference.setSummary(listPreference.getEntry());
-        } else {
+        } else if (preference instanceof EditTextPreference) {
             SharedPreferences sharedPrefs = getPreferenceManager().getSharedPreferences();
             String newSummary = sharedPrefs.getString(key, "Default");
             if (!"Default".equals(newSummary)) {
                 preference.setSummary(newSummary);
             }
+        } else {
+
         }
     }
 }

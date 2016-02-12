@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hephalump on 12/02/2016.
+ * Created by hephalump on 12/02/2016
  */
 public class DeleteConfirmAlertDialog extends DialogFragment {
 
@@ -22,19 +22,17 @@ public class DeleteConfirmAlertDialog extends DialogFragment {
     public interface DeleteCourse {
         void onFinishUserDialog(int position);
     }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
         arguments = getArguments();
         return new AlertDialog.Builder(getActivity())
-
                 // set dialog icon
                 .setIcon(android.R.drawable.stat_notify_error)
                         // set Dialog Title
                 .setTitle("Delete")
                         // Set Dialog Message
                 .setMessage("Are you sure you want to delete this course?")
-
                         // positive button
                 .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/title_activity_settings_notification">
     <PreferenceCategory
         android:title="@string/title_notifications_preferences">
@@ -32,14 +33,20 @@
             android:key="preferenceNotificationsStatusBar"
             android:title="@string/item_notifications_statusbar"
             android:summary="@string/summary_notifications_statusbar"/>
-        <CheckBoxPreference
+        <com.example.takai.study_project.SeekBarPreference
             android:key="preferenceNotificationsThreshold"
             android:title="@string/item_notifications_threshold"
-            android:summary="@string/summary_notifications_threshold"/>
-        <CheckBoxPreference
+            android:summary="@string/summary_notifications_threshold"
+            app:defaultProgress="5"
+            app:max="10"
+        />
+        <com.example.takai.study_project.SeekBarPreference
             android:key="preferenceNotificationsScope"
             android:title="@string/item_notifications_scope"
-            android:summary="@string/summary_notifications_scope"/>
+            android:summary="@string/summary_notifications_scope"
+            app:defaultProgress="5"
+            app:max="10"
+        />
     </PreferenceCategory>
 
 </PreferenceScreen>
