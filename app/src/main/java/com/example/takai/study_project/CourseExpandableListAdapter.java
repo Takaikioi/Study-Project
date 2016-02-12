@@ -208,55 +208,55 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
     }
 
     // method for deleting the objects and making the screen update afterwards
-    public boolean deleteObject(int position){
-        dataSource = new CourseDataSource(context); // a database helper
-        try {
-            dataSource.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        courseModels = dataSource.getAllDataItems(); // add all the data items to a list
-        dataSource.deleteData(courseModels.get(position)); // select the object from the list to delete
-        courseModels.remove(position); // take the object out as the list hasn't been updated
-        groups.clear(); // renew the dataset
-        for(int i = 0; i < courseModels.size(); i++){
-            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
-            group.children.add(courseModels.get(i).getCode());
-            group.colorchildren.add(courseModels.get(i).getCourseColor());
-            groups.append(i, group);
-        }
-        dataSource.close();
-        notifyDataSetChanged(); // inform the view the dataset has changed
-        return true;
-    }
-    // a method for updating the objects in the view and the database.
-    public boolean updateObject(String name, String code, int color,int position){
-        // update the
-
-        dataSource = new CourseDataSource(context);
-        try {
-            dataSource.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        courseModels = dataSource.getAllDataItems();
-        courseModels.get(position).setName(name);
-        courseModels.get(position).setCode(code);
-        courseModels.get(position).setCourseColor(color);
-        dataSource.updateElement(courseModels.get(position));
-        courseModels = dataSource.getAllDataItems();
-        groups.clear();
-        for(int i = 0; i < courseModels.size(); i++){
-            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
-            group.children.add(courseModels.get(i).getCode());
-            group.colorchildren.add(courseModels.get(i).getCourseColor());
-            groups.append(i, group);
-        }
-        dataSource.close();
-        notifyDataSetChanged();
-
-        return true;
-    }
+//    public boolean deleteObject(int position){
+//        dataSource = new CourseDataSource(context); // a database helper
+//        try {
+//            dataSource.open();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        courseModels = dataSource.getAllDataItems(); // add all the data items to a list
+//        dataSource.deleteData(courseModels.get(position)); // select the object from the list to delete
+//        courseModels.remove(position); // take the object out as the list hasn't been updated
+//        groups.clear(); // renew the dataset
+//        for(int i = 0; i < courseModels.size(); i++){
+//            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+//            group.children.add(courseModels.get(i).getCode());
+//            group.colorchildren.add(courseModels.get(i).getCourseColor());
+//            groups.append(i, group);
+//        }
+//        dataSource.close();
+//        notifyDataSetChanged(); // inform the view the dataset has changed
+//        return true;
+//    }
+//    // a method for updating the objects in the view and the database.
+//    public boolean updateObject(String name, String code, int color,int position){
+//        // update the
+//
+//        dataSource = new CourseDataSource(context);
+//        try {
+//            dataSource.open();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        courseModels = dataSource.getAllDataItems();
+//        courseModels.get(position).setName(name);
+//        courseModels.get(position).setCode(code);
+//        courseModels.get(position).setCourseColor(color);
+//        dataSource.updateElement(courseModels.get(position));
+//        courseModels = dataSource.getAllDataItems();
+//        groups.clear();
+//        for(int i = 0; i < courseModels.size(); i++){
+//            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+//            group.children.add(courseModels.get(i).getCode());
+//            group.colorchildren.add(courseModels.get(i).getCourseColor());
+//            groups.append(i, group);
+//        }
+//        dataSource.close();
+//        notifyDataSetChanged();
+//
+//        return true;
+//    }
 
 
 }
