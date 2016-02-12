@@ -147,7 +147,12 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getItemId() == R.id.action_course_remove){
-                            deleteObject(groupPosition);
+                            DeleteConfirmAlertDialog checkDelete = new DeleteConfirmAlertDialog();
+                            FragmentManager manager = context.getFragmentManager();
+                            Bundle deleteArgs = new Bundle();
+                            deleteArgs.putInt("position",groupPosition);
+                            checkDelete.setArguments(deleteArgs);
+                            checkDelete.show(manager, "Confirm Delete");
                         }
                         else if(item.getItemId() == R.id.action_course_update){
                             CourseDialogueFragmentEdit editNameDialog = new CourseDialogueFragmentEdit();

@@ -42,7 +42,7 @@ import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 
 public class CourseActivity extends AppCompatActivity implements CourseDialogFragmentAdd.UserNameListener, CourseDialogueFragmentEdit.UpdateDetails
-{
+, DeleteConfirmAlertDialog.DeleteCourse{
     SparseArray<Group> groups = new SparseArray<Group>();
     //array of strings for the names of the courses.
     ArrayList<String> myNameList=
@@ -162,7 +162,12 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
     // transfer data from the add dialogue to the database.
     @Override
     public void onFinishUserDialog(String name, String code, int color, int position){
-        updateObject(name,code,color,position);
+        updateObject(name, code, color, position);
+    }
+    //
+    @Override
+    public void onFinishUserDialog(int position){
+        deleteObject(position);
     }
     @Override
     public void onFinishUserDialog(String courseName, String courseCode, int colour) {
@@ -209,6 +214,28 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         dataSource.close();
         courseListAdapter.notifyDataSetChanged();
 
+        return true;
+    }
+
+    public boolean deleteObject(int position){
+        dataSource = new CourseDataSource(this); // a database helper
+        try {
+            dataSource.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        courseModels = dataSource.getAllDataItems(); // add all the data items to a list
+        dataSource.deleteData(courseModels.get(position)); // select the object from the list to delete
+        courseModels.remove(position); // take the object out as the list hasn't been updated
+        groups.clear(); // renew the dataset
+        for(int i = 0; i < courseModels.size(); i++){
+            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
+            group.children.add(courseModels.get(i).getCode());
+            group.colorchildren.add(courseModels.get(i).getCourseColor());
+            groups.append(i, group);
+        }
+        dataSource.close();
+        courseListAdapter.notifyDataSetChanged(); // inform the view the dataset has changed
         return true;
     }
 }
