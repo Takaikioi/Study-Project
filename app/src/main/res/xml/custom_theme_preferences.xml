@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="@string/item_colour_preference_add_theme">
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="toolbarColourPreference"
+            android:title="@string/item_colour_preference_toolbar"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="courseColourPreference"
+            android:title="@string/item_colour_preference_courses"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="reviewColourPreference"
+            android:title="@string/item_colour_preference_review"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="timetableColourPreference"
+            android:title="@string/item_colour_preference_timetable"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:key="assessmentColourPreference"
+            android:title="@string/item_colour_preference_assessments"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_defaultColor="#000000"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>

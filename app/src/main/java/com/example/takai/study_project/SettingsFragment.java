@@ -4,11 +4,13 @@ import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
+import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -61,6 +63,10 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
             backArrow.setColorFilter(getResources().getColor(R.color.materialcolorpicker__white), PorterDuff.Mode.SRC_ATOP);
             bar.setHomeAsUpIndicator(backArrow);
             bar.setTitle(getPreferenceScreen().getTitle());
+            PreferenceScreen screen = this.getPreferenceScreen();
+            if (screen.getTitle().equals("Miscellaneous")) {
+
+            }
         }
         return layout;
     }
@@ -104,6 +110,8 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 
         } else if (preference instanceof ColorPreference) {
 
+        } else if (preference instanceof CheckBoxPreference) {
+
         } else if (preference instanceof ListPreference) {
             ListPreference listPreference = (ListPreference) preference;
             listPreference.setSummary(listPreference.getEntry());
@@ -114,6 +122,5 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
                 preference.setSummary(newSummary);
             }
         }
-        return;
     }
 }

@@ -70,6 +70,14 @@
             <item>Locked Session</item>
             <item>Screen Always On</item>
         </string-array>
+        <string-array name="settings_miscellaneous_custom_themes">
+            <item>Default</item>
+            <item>Dark</item>
+            <item>Light</item>
+            <item>Chrome</item>
+            <item>Pastel</item>
+            <item>Neon</item>
+        </string-array>
 
     <!-- Titles -->
 
@@ -182,6 +190,9 @@
             <string name="item_colour_preference_review">Review Screen Colour</string>
             <string name="item_colour_preference_assessments">Assessments Screen Colour</string>
             <string name="item_colour_preference_toolbar">Toolbar Colour</string>
+            <string name="item_colour_preference_theme">Current Theme</string>
+            <string name="item_colour_preference_theme_choose">Pick a Theme</string>
+            <string name="item_colour_preference_add_theme">Add Custom Theme</string>
             <string name="item_other_preference_silent_session">Silent Session</string>
             <string name="item_other_preference_locked_session">Locked Session</string>
             <string name="item_other_preference_screen_activity">Screen Activity</string>
