@@ -81,9 +81,10 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
             public void onClick(View v) {
                 Intent intent = new Intent(context, ModuleActivity.class);
                 Bundle moduleData = new Bundle();
-                long courseID = (courseModels.get(groupPosition).getId());
-                int courseID2 = courseID.intValue();
-                moduleData.putInt( "courseid",courseID)
+                Long courseID = (courseModels.get(groupPosition).getId());
+
+                moduleData.putInt( "courseid",courseID.intValue());
+                
                 context.startActivity(intent);
                 Toast.makeText(context, children,
                         Toast.LENGTH_SHORT).show();

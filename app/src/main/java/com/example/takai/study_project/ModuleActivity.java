@@ -45,9 +45,9 @@ public class ModuleActivity extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        courseID =
+        courseID = 1;
         // adding all the data items to a dataset so that the list can have values
-        moduleModels = dataSource.getAllDataItems();
+        moduleModels = dataSource.getAllDataItems(courseID);
         for (int i = 0;i < moduleModels.size(); i ++){
             myNameList.add(moduleModels.get(i).getName());
         }
