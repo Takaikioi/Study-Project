@@ -27,7 +27,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile "com.android.support:recyclerview-v7:23.0.1"
+    compile 'com.android.support:recyclerview-v7:23.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.github.DASAR:ShiftColorPicker:v0.5'
@@ -36,4 +36,5 @@ dependencies {
     compile 'com.pes.materialcolorpicker:library:1.0.2'
     compile 'io.github.yavski:fab-speed-dial:1.0.2'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    //compile 'com.github.rtugeek:ColorSeekBar:3ec2b552fa'
 }

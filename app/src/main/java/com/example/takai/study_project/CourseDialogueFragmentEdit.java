@@ -88,7 +88,7 @@ public class CourseDialogueFragmentEdit extends DialogFragment{
             public void onClick(View v) {
                 UpdateDetails activity = (UpdateDetails) getActivity();
                 activity.onFinishUserDialog(courseCode.getText().toString(), courseName.getText().toString(), colorPicker.getColor(), arguments.getInt("position"));
-               // updateElement(courseName.getText().toString(), courseCode.getText().toString(), colorPicker.getColor(), arguments.getInt("position"));
+                //updateElement(courseName.getText().toString(), courseCode.getText().toString(), colorPicker.getColor(), arguments.getInt("position"));
                 getDialog().dismiss();
             }
         });
