@@ -12,4 +12,13 @@
     tools:context="com.example.takai.study_project.ModuleActivity"
     tools:showIn="@layout/activity_module">
 
+    <ListView
+        android:id="@+id/moduleListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+    </ListView>
+
 </RelativeLayout>

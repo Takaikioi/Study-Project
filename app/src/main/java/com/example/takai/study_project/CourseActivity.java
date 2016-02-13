@@ -120,8 +120,8 @@ public class CourseActivity extends AppCompatActivity implements CourseDialogFra
         }
         // creating the expandable list and adding it to the screen
         courseListAdapter = new CourseExpandableListAdapter(this, groups);
-        ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandableListView);
-        listView.setAdapter(courseListAdapter);
+        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expandableListView.setAdapter(courseListAdapter);
 
 
     dataSource.close();
