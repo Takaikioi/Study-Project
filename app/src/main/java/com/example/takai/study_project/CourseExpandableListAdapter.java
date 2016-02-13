@@ -67,7 +67,7 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
     }
 
     @Override // handles the expanded lists
-    public View getChildView(int groupPosition, final int childPosition,
+    public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final String children = (String) getChild(groupPosition, childPosition);
         TextView text = null;
@@ -80,6 +80,10 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ModuleActivity.class);
+                Bundle moduleData = new Bundle();
+                long courseID = (courseModels.get(groupPosition).getId());
+                int courseID2 = courseID.intValue();
+                moduleData.putInt( "courseid",courseID)
                 context.startActivity(intent);
                 Toast.makeText(context, children,
                         Toast.LENGTH_SHORT).show();

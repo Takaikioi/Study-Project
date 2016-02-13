@@ -1,5 +1,6 @@
 package com.example.takai.study_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,10 +17,11 @@ import java.util.List;
 public class ModuleActivity extends AppCompatActivity {
     ArrayList<String> myNameList=
             new ArrayList<String>();
-    List<CourseModel> courseModels =
-            new ArrayList<CourseModel>();
-    ModuleListAdapter courseListAdapter;
-    private CourseDataSource dataSource;
+    List<ModuleModel> moduleModels =
+            new ArrayList<ModuleModel>();
+    ModuleListAdapter moduleListAdapter;
+    private ModuleDataSource dataSource;
+    public int courseID;
     ListView listView;
 
     @Override
@@ -37,22 +39,23 @@ public class ModuleActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        dataSource = new CourseDataSource(this);
+        dataSource = new ModuleDataSource(this);
         try {
             dataSource.open();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        courseID =
         // adding all the data items to a dataset so that the list can have values
-        courseModels = dataSource.getAllDataItems();
-        for (int i = 0;i < courseModels.size(); i ++){
-            myNameList.add(courseModels.get(i).getName());
+        moduleModels = dataSource.getAllDataItems();
+        for (int i = 0;i < moduleModels.size(); i ++){
+            myNameList.add(moduleModels.get(i).getName());
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView = (ListView) findViewById(R.id.moduleListView);
-        courseListAdapter = new ModuleListAdapter(this, myNameList);
+        moduleListAdapter = new ModuleListAdapter(this, myNameList);
 
-        listView.setAdapter(courseListAdapter);
+        listView.setAdapter(moduleListAdapter);
     }
 
 }
