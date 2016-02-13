@@ -79,12 +79,20 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(courseModels.size() < groups.size()){
+                    dataSource = new CourseDataSource(context);
+                    try {
+                        dataSource.open();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    // adding all the data items to a dataset so that the list can have values
+                    courseModels = dataSource.getAllDataItems();
+                    dataSource.close();
+                }
                 Intent intent = new Intent(context, ModuleActivity.class);
-                Bundle moduleData = new Bundle();
                 Long courseID = (courseModels.get(groupPosition).getId());
-
-                moduleData.putInt( "courseid",courseID.intValue());
-                
+                intent.putExtra("courseID", courseID.intValue());
                 context.startActivity(intent);
                 Toast.makeText(context, children,
                         Toast.LENGTH_SHORT).show();

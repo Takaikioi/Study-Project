@@ -23,6 +23,7 @@ public class ModuleActivity extends AppCompatActivity {
     private ModuleDataSource dataSource;
     public int courseID;
     ListView listView;
+    Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,10 @@ public class ModuleActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         courseID = 1;
+        extras = getIntent().getExtras();
+
         // adding all the data items to a dataset so that the list can have values
-        moduleModels = dataSource.getAllDataItems(courseID);
+        moduleModels = dataSource.getAllDataItems(extras.getInt("courseID"));
         for (int i = 0;i < moduleModels.size(); i ++){
             myNameList.add(moduleModels.get(i).getName());
         }
