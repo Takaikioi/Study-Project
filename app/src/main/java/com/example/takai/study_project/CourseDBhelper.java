@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 /**
- * Created by hephalump on 30/12/2015.
+ * Created by hephalump on 30/12/2015
  */
 public class CourseDBhelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 19;

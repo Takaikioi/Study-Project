@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hephalump on 30/12/2015.
+ * Created by hephalump on 30/12/2015
  */
 public class CourseDataSource {
 
