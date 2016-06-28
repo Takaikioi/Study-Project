@@ -17,4 +17,7 @@ public class Group {
         this.colour = colour;
         this.code = code;
     }
+    public Group(String string){
+        this.string = string;
+    }
 }

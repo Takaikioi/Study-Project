@@ -17,13 +17,13 @@ public class CourseDataSource {
 
     // Database fields
     private SQLiteDatabase database;
-    private CourseDBhelper dbHelper;
-    private String[] allColumns = { CourseDBhelper.COLUMN_ID,
-            CourseDBhelper.COURSE_NAME_COLUMN, CourseDBhelper.COURSE_CODE_COLUMN, CourseDBhelper.COURSE_COLOUR_COLUMN, CourseDBhelper.COURSE_ACTIVE_COLUMN,
-    CourseDBhelper.COURSE_START_DATE_COLUMN,CourseDBhelper.COURSE_END_DATE_COLUMN };
+    private DBhelper dbHelper;
+    private String[] allColumns = { DBhelper.COLUMN_ID,
+            DBhelper.COURSE_NAME_COLUMN, DBhelper.COURSE_CODE_COLUMN, DBhelper.COURSE_COLOUR_COLUMN, DBhelper.COURSE_ACTIVE_COLUMN,
+    DBhelper.COURSE_START_DATE_COLUMN, DBhelper.COURSE_END_DATE_COLUMN };
 
     public CourseDataSource(Context context) {
-        dbHelper = new CourseDBhelper(context);
+        dbHelper = new DBhelper(context);
     }
 
     public void open() throws SQLException {
@@ -36,17 +36,17 @@ public class CourseDataSource {
 
     public CourseModel createData (String name, String code, int courseColor, boolean active, String startDate, String endDate) {
         ContentValues values = new ContentValues();
-        values.put(CourseDBhelper.COURSE_NAME_COLUMN, name);
-        values.put(CourseDBhelper.COURSE_CODE_COLUMN, code);
-        values.put(CourseDBhelper.COURSE_COLOUR_COLUMN, courseColor);
-        values.put(CourseDBhelper.COURSE_ACTIVE_COLUMN, active);
-        values.put(CourseDBhelper.COURSE_START_DATE_COLUMN, startDate);
-        values.put(CourseDBhelper.COURSE_END_DATE_COLUMN, endDate);
+        values.put(DBhelper.COURSE_NAME_COLUMN, name);
+        values.put(DBhelper.COURSE_CODE_COLUMN, code);
+        values.put(DBhelper.COURSE_COLOUR_COLUMN, courseColor);
+        values.put(DBhelper.COURSE_ACTIVE_COLUMN, active);
+        values.put(DBhelper.COURSE_START_DATE_COLUMN, startDate);
+        values.put(DBhelper.COURSE_END_DATE_COLUMN, endDate);
 
-        long insertId = database.insert(CourseDBhelper.COURSE_TABLE_NAME, null,
+        long insertId = database.insert(DBhelper.COURSE_TABLE_NAME, null,
                 values);
-        Cursor cursor = database.query(CourseDBhelper.COURSE_TABLE_NAME,
-                allColumns, CourseDBhelper.COLUMN_ID + " = " + insertId, null,
+        Cursor cursor = database.query(DBhelper.COURSE_TABLE_NAME,
+                allColumns, DBhelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
         CourseModel newCourseModel = cursorToCourseModel(cursor);
@@ -57,14 +57,14 @@ public class CourseDataSource {
     public void deleteData(CourseModel courseModel) {
         long id = courseModel.getId();
         System.out.println("Data deleted with id: " + id);
-        database.delete(CourseDBhelper.COURSE_TABLE_NAME, CourseDBhelper.COLUMN_ID
+        database.delete(DBhelper.COURSE_TABLE_NAME, DBhelper.COLUMN_ID
                 + " = " + id, null);
     }
 
     public List<CourseModel> getAllDataItems() {
         List<CourseModel> courseModels = new ArrayList<CourseModel>();
 
-        Cursor cursor = database.query(CourseDBhelper.COURSE_TABLE_NAME,
+        Cursor cursor = database.query(DBhelper.COURSE_TABLE_NAME,
                 allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -99,21 +99,21 @@ public class CourseDataSource {
     }
 
     public int getNumberOfElements(){
-        Cursor cursor = database.query(CourseDBhelper.COURSE_TABLE_NAME,
+        Cursor cursor = database.query(DBhelper.COURSE_TABLE_NAME,
                 allColumns, null, null, null, null, null);
         int numRows = cursor.getColumnCount();
         return numRows;
     }
     public boolean updateElement(CourseModel courseModel){
         ContentValues values = new ContentValues();
-        values.put(CourseDBhelper.COURSE_NAME_COLUMN, courseModel.getName());
-        values.put(CourseDBhelper.COURSE_CODE_COLUMN, courseModel.getCode());
-        values.put(CourseDBhelper.COURSE_COLOUR_COLUMN, courseModel.getCourseColor());
-        values.put(CourseDBhelper.COURSE_ACTIVE_COLUMN, courseModel.isActive());
-        values.put(CourseDBhelper.COURSE_START_DATE_COLUMN, courseModel.getStartDate());
-        values.put(CourseDBhelper.COURSE_END_DATE_COLUMN, courseModel.getEndDate());
+        values.put(DBhelper.COURSE_NAME_COLUMN, courseModel.getName());
+        values.put(DBhelper.COURSE_CODE_COLUMN, courseModel.getCode());
+        values.put(DBhelper.COURSE_COLOUR_COLUMN, courseModel.getCourseColor());
+        values.put(DBhelper.COURSE_ACTIVE_COLUMN, courseModel.isActive());
+        values.put(DBhelper.COURSE_START_DATE_COLUMN, courseModel.getStartDate());
+        values.put(DBhelper.COURSE_END_DATE_COLUMN, courseModel.getEndDate());
 
-        database.update(CourseDBhelper.COURSE_TABLE_NAME,values,CourseDBhelper.COLUMN_ID
+        database.update(DBhelper.COURSE_TABLE_NAME,values, DBhelper.COLUMN_ID
                 + " = " + courseModel.getId(), null);
         return true;
     }

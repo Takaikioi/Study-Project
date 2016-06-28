@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class ModuleDBhelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "ModuleDatabase";
+    public static final String MODULE_DATABASE_NAME = "ModuleDatabase";
     public static final String MODULE_TABLE_NAME = "Module";
     public static final String COLUMN_ID = "_id";
     public static final String COURSE_FOREIGN_ID = "CourseForeignKey";
@@ -30,7 +30,7 @@ public class ModuleDBhelper extends SQLiteOpenHelper {
 
 
     public ModuleDBhelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, MODULE_DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ModuleDBhelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(CourseDBhelper.class.getName(),
+        Log.w(DBhelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + MODULE_TABLE_NAME);

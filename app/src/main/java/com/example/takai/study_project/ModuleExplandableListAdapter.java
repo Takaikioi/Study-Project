@@ -1,24 +1,15 @@
 package com.example.takai.study_project;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuBuilder;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -26,31 +17,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by hephalump on 10/02/2016
+ * Created by hephalump on 23/02/2016.
  */
-public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
+public class ModuleExplandableListAdapter extends BaseExpandableListAdapter {
     public Activity context;// the context of the application if came from
     public SparseArray<Group> groups;// the dataset
     public LayoutInflater inflater; // not sure, inflates something
-    private CourseDataSource dataSource; // database helper
-    List<CourseModel> courseModels = // list of data objects
-            new ArrayList<CourseModel>();
+    private ModuleDataSource dataSource; // database helper
+    List<ModuleModel> moduleModels = // list of data objects
+            new ArrayList<ModuleModel>();
+    public Bundle courseInformation;
 
-    public CourseExpandableListAdapter(Activity context, SparseArray<Group> groups) {
+    public ModuleExplandableListAdapter(Activity context, SparseArray<Group> groups) {
         inflater = context.getLayoutInflater();
         this.groups = groups;
         this.context = context;
     }
 
 
-    public void enableUpdateDialogue(CourseModel courseModel){
+    public void enableUpdateDialogue(CourseModel courseModel) {
         CourseDialogFragmentAdd editNameDialog = new CourseDialogFragmentAdd();
     }
 
@@ -69,7 +58,9 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
     @Override // handles the expanded lists
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
+
         final String children = (String) getChild(groupPosition, childPosition);
+        final int courseID = courseInformation.getInt("courseID");
         TextView text = null;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.course_detail_view, null);
@@ -79,22 +70,23 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(courseModels.size() < groups.size()){
-                    dataSource = new CourseDataSource(context);
+                if (moduleModels.size() < groups.size()) {
+                    dataSource = new ModuleDataSource(context);
                     try {
                         dataSource.open();
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
                     // adding all the data items to a dataset so that the list can have values
-                    courseModels = dataSource.getAllDataItems();
+                    moduleModels = dataSource.getAllDataItems(courseID);
+                    //// TODO: 23/02/2016  change to courseid
                     dataSource.close();
                 }
                 Intent intent = new Intent(context, ModuleActivity.class);
-                Long courseID = (courseModels.get(groupPosition).getId());
+                Long courseID = (moduleModels.get(groupPosition).getId());
                 intent.putExtra("courseID", courseID.intValue());
                 context.startActivity(intent);
-                Toast.makeText(context,"" + courseID + "",
+                Toast.makeText(context, "" + courseID + "",
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -131,13 +123,14 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
         return 0;
     }
 
-    public void addObject(int size,Group group){
-    groups.append(size, group);
+    public void addObject(int size, Group group) {
+        groups.append(size, group);
     }
 
     @Override // handles the main list objects
     public View getGroupView(final int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
+        final int courseID = courseInformation.getInt("courseID");
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.course_listitem_row, null);
         }
@@ -162,31 +155,31 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getItemId() == R.id.action_course_remove){
+                        if (item.getItemId() == R.id.action_course_remove) {
                             DeleteConfirmAlertDialog checkDelete = new DeleteConfirmAlertDialog();
                             FragmentManager manager = context.getFragmentManager();
                             Bundle deleteArgs = new Bundle();
-                            deleteArgs.putInt("position",groupPosition);
+                            deleteArgs.putInt("position", groupPosition);
                             checkDelete.setArguments(deleteArgs);
                             checkDelete.show(manager, "Confirm Delete");
-                        }
-                        else if(item.getItemId() == R.id.action_course_update){
+                        } else if (item.getItemId() == R.id.action_course_update) {
                             CourseDialogueFragmentEdit editNameDialog = new CourseDialogueFragmentEdit();
                             Bundle args = new Bundle();
-                            if(courseModels.size() < groups.size()){
-                                dataSource = new CourseDataSource(context);
+                            if (moduleModels.size() < groups.size()) {
+                                dataSource = new ModuleDataSource(context);
                                 try {
                                     dataSource.open();
                                 } catch (SQLException e) {
                                     e.printStackTrace();
                                 }
                                 // adding all the data items to a dataset so that the list can have values
-                                courseModels = dataSource.getAllDataItems();
+                                moduleModels = dataSource.getAllDataItems(courseID);
+                                //// TODO: 23/02/2016 change to courseid
                                 dataSource.close();
                             }
-                            args.putString("name",courseModels.get(groupPosition).getName());
-                            args.putString("code",courseModels.get(groupPosition).getCode());
-                            args.putInt("color", courseModels.get(groupPosition).getCourseColor());
+                            args.putString("name", moduleModels.get(groupPosition).getName());
+//                            args.putString("code", moduleModels.get(groupPosition).getCode());
+//                            args.putInt("color", moduleModels.get(groupPosition).getCourseColor());
                             args.putInt("position", groupPosition);
                             editNameDialog.setArguments(args);
                             FragmentManager manager = context.getFragmentManager();
@@ -223,7 +216,7 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
         return false;
     }
 
-    // method for deleting the objects and making the screen update afterwards
+// method for deleting the objects and making the screen update afterwards
 //    public boolean deleteObject(int position){
 //        dataSource = new CourseDataSource(context); // a database helper
 //        try {
@@ -231,14 +224,14 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-//        courseModels = dataSource.getAllDataItems(); // add all the data items to a list
-//        dataSource.deleteData(courseModels.get(position)); // select the object from the list to delete
-//        courseModels.remove(position); // take the object out as the list hasn't been updated
+//        moduleModels = dataSource.getAllDataItems(); // add all the data items to a list
+//        dataSource.deleteData(moduleModels.get(position)); // select the object from the list to delete
+//        moduleModels.remove(position); // take the object out as the list hasn't been updated
 //        groups.clear(); // renew the dataset
-//        for(int i = 0; i < courseModels.size(); i++){
-//            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
-//            group.children.add(courseModels.get(i).getCode());
-//            group.colorchildren.add(courseModels.get(i).getCourseColor());
+//        for(int i = 0; i < moduleModels.size(); i++){
+//            Group group = new Group(moduleModels.get(i).getName(), moduleModels.get(i).getCourseColor(), moduleModels.get(i).getCode());
+//            group.children.add(moduleModels.get(i).getCode());
+//            group.colorchildren.add(moduleModels.get(i).getCourseColor());
 //            groups.append(i, group);
 //        }
 //        dataSource.close();
@@ -255,17 +248,17 @@ public class CourseExpandableListAdapter extends  BaseExpandableListAdapter  {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-//        courseModels = dataSource.getAllDataItems();
-//        courseModels.get(position).setName(name);
-//        courseModels.get(position).setCode(code);
-//        courseModels.get(position).setCourseColor(color);
-//        dataSource.updateElement(courseModels.get(position));
-//        courseModels = dataSource.getAllDataItems();
+//        moduleModels = dataSource.getAllDataItems();
+//        moduleModels.get(position).setName(name);
+//        moduleModels.get(position).setCode(code);
+//        moduleModels.get(position).setCourseColor(color);
+//        dataSource.updateElement(moduleModels.get(position));
+//        moduleModels = dataSource.getAllDataItems();
 //        groups.clear();
-//        for(int i = 0; i < courseModels.size(); i++){
-//            Group group = new Group(courseModels.get(i).getName(), courseModels.get(i).getCourseColor(), courseModels.get(i).getCode());
-//            group.children.add(courseModels.get(i).getCode());
-//            group.colorchildren.add(courseModels.get(i).getCourseColor());
+//        for(int i = 0; i < moduleModels.size(); i++){
+//            Group group = new Group(moduleModels.get(i).getName(), moduleModels.get(i).getCourseColor(), moduleModels.get(i).getCode());
+//            group.children.add(moduleModels.get(i).getCode());
+//            group.colorchildren.add(moduleModels.get(i).getCourseColor());
 //            groups.append(i, group);
 //        }
 //        dataSource.close();
