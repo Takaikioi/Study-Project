@@ -83,6 +83,7 @@
     <!-- Titles -->
 
         <!-- Content -->
+            <string name="title_activity_splash">Study Pro</string>
             <string name="title_activity_course_page">Courses</string>
             <string name="title_activity_time_table">Timetable</string>
             <string name="title_activity_review">Review</string>
