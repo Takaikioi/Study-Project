@@ -71,7 +71,7 @@ public class ModuleActivity extends AppCompatActivity implements ModuleDialogFra
         listView = (ExpandableListView) findViewById(R.id.expandableListView);
         moduleListAdapter = new ModuleExplandableListAdapter(this, groups);
 
-        listView.setAdapter(moduleListAdapter);
+        listView.setAdapter(moduleListAdapter); // this is the error TODO: fix this error and it will work.
     }
     // add a module element to the database and update the screen
     @Override
